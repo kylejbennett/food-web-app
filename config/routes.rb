@@ -1,22 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+
   root :to => 'home#index'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
+  
   get 'users/sign_out' => 'home#index'
+
+  resources :profiles
+
+  delete '/users/edit' => 'profiles#destroy'
+
+  Rails.application.routes.draw do
+
+    devise_for :users, controllers: {
+      sessions: 'users/sessions'
+    }
+  end
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

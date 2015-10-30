@@ -1,23 +1,14 @@
 class UsersController 
 
-  def index
-  end
+	def edit
+	end
 
-  def show
-  end
+	def destroy
+		@user = User.find(current_user.id)
+	    @user.destroy
+	    session[:user_id] = nil
+	    flash[:alert] = "You're account has been deleted"
+	    redirect_to root_path
+	end
 
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end

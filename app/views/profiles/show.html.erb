@@ -1,0 +1,28 @@
+
+<% if @profile == @current_profile %>
+	<h1>Your Profile</h1>
+	<p><%= link_to "Edit Your Profile", new_profile_path %></p>
+<% else %>
+	<h1><%= @profile.username %>'s Profile</h1>
+<% end %>
+
+<ul>
+	<li>
+		<h2><%= @profile.username %></h2>
+	</li>
+	<li>
+		<p>Name: <%= @profile.fname %> <%= @profile.lname %><p>
+	</li>
+	<li>
+		<%= image_tag @profile.avatar.url(:medium) %>
+	</li>
+	<li>
+		<p>Email: <%= @profile.email %><p>
+	</li>
+	<li>
+		<p>Birthday: <%= @profile.birthdate %><p>
+	</li>
+	<li>
+		<p>Bio: <%= @profile.bio %><p>
+	</li>
+</ul>

@@ -1,20 +1,12 @@
 <h1>Home Page</h1>
 
-<ul>
-	<li>
-		<%= link_to "Sign Up", new_user_registration_path %>
-	</li>
-	<li>
-		<%= link_to "Sign In", new_user_session_path %>
-	</li>
-	<li>
-		<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-	</li>
-</ul>
+<h3><%= @recipe_name %></h3>
+<p><%= @recipe_source %></p>
+<%= image_tag @recipe_photo %>
 
-<% if current_user %>
-	<% User.all.each do |user| %>
-		<%= user.email %>
-	<% end %>
+<br>
+
+<%= @recipe_info.each do |recipe| %>
+	<%= image_tag recipe %>
 <% end %>
 

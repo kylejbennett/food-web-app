@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post 'recipes/search' => 'recipes#search' 
 
   root :to => 'home#index'
   
@@ -7,14 +8,14 @@ Rails.application.routes.draw do
 
   resources :profiles
 
+  resources :recipes
+
   delete '/users/edit' => 'profiles#destroy'
 
-  Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
-    devise_for :users, controllers: {
-      sessions: 'users/sessions'
-    }
-  end
 
 
 

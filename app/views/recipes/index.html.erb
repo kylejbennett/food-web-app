@@ -1,5 +1,8 @@
-
-<h1>Search Recipes</h1>
+<% if @term %>
+	<h1>Search results for "<%= @term %>"</h1>
+<% else %>
+	<h1>Search the Web for Recipes</h1>
+<% end %>
 
 <%= form_tag "/recipes/search", method: :post do %>
 	<%= text_field_tag :term, @term, :placeholder => "Enter recipe search term here", size: 30 %>
@@ -18,9 +21,9 @@
 					<%= image_tag recipe['image'] %>
 					<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
 					<h4><%= recipe['source'] %></h4>
-					<p>Course: <%= recipe['course'] %></p>
 					<p>Rating: <%= recipe['rating'] %> Stars</p>
-					<p>Total Cook Time: <%= recipe['time'] %> - Yield: <%= recipe['yield'] %></p>
+					<p>Total Cook Time: <%= recipe['time'] %></p>
+					<p>Yield: <%= recipe['yield'] %></p>
 				</div>
 				<br>
 			<% end %>
@@ -28,6 +31,13 @@
 	<% end %>
 
 	<div class="clear"></div>
+
+	<h1>User Recipes</h1>
+
+	<% @user_recipes.each do |recipe| %>
+		<%= recipe.recipeName %>
+		<br>
+	<% end %>
 
 </div>
 

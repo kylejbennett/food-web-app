@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipeName: MyString
+  yummlyID: MyString
+  source: MyString
+  image: MyString
+  course: MyString
+  cuisine: MyString
+  ingredients: MyString
+  rating: 1
+  time: MyString
+  url: MyString
+  user_id: MyString
+  instructions: MyText
+
+two:
+  recipeName: MyString
+  yummlyID: MyString
+  source: MyString
+  image: MyString
+  course: MyString
+  cuisine: MyString
+  ingredients: MyString
+  rating: 1
+  time: MyString
+  url: MyString
+  user_id: MyString
+  instructions: MyText

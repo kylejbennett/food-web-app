@@ -1,2 +1,13 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.recipeName %></h1>
+
+<%= image_tag @recipe.avatar %>
+<h4><em>Added by:</em>  <%= @recipe_created_by.username %></h4>
+<p><em>Source:</em>  <%= link_to @recipe.source, @recipe.url, :target=>"blank" %></p>
+<p><em>Total Cooking Time:</em>  <%= @recipe.time %></p>
+<p><em>Yield:</em>  <%= @recipe.yield %></p>
+
+<p><em>Instructions:</em> <br><%= @recipe.instructions %></p>
+
+<% if current_user.id == @recipe.user_id %>
+	<%=link_to "Delete this Recipe", recipe_path, method: :delete, data: {confirm: "Permanently delete this recipe?"} %>
+<% end %>

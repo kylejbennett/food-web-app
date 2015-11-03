@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030154859) do
+ActiveRecord::Schema.define(version: 20151103181450) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "fname"
@@ -23,6 +23,28 @@ ActiveRecord::Schema.define(version: 20151030154859) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "recipeName"
+    t.string   "yummlyID"
+    t.string   "source"
+    t.string   "imageUrl"
+    t.string   "course"
+    t.string   "cuisine"
+    t.string   "ingredients"
+    t.integer  "rating"
+    t.string   "time"
+    t.string   "url"
+    t.integer  "user_id"
+    t.text     "instructions"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "yield"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

@@ -8,14 +8,29 @@
 	background-image: url('/food_prep.jpg');
 	background-size: cover;
 
+	ul{
+		padding-right: 15px;
+		text-align: right;
+
+		li{
+			padding-top: 10px;
+			list-style: none;
+
+			a{
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
+
 	h1{
-		padding-top: 250px;
-		padding-left: 250px;
+		padding-top: 5%;
+		padding-left: 16%;
 	}
 
 	p{
-		margin-top: 200px;
-		margin-left: 575px;
+		margin-top: 13%;
+		margin-left: 40%;
 		text-align: center;
 		width: 200px;
 		height: 30px;

@@ -21,3 +21,25 @@
  .header{
  	height: 150px;
  }
+
+.alert-warning{
+	text-align: center;
+	height: 20px;
+	width: 200px;
+	margin-left: 10%;
+	color: red;
+	background-color: white;
+	border-radius: 5px;
+	opacity: 0.5;
+}
+
+.alert-success{
+	text-align: center;
+	height: 20px;
+	width: 200px;
+	margin-left: 10%;
+	color: #15FF2B;
+	background-color: white;
+	border-radius: 5px;
+	opacity: 0.5;
+}

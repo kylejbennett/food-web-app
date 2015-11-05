@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>FoodProj</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="http://transitionculture.org/wp-content/uploads/potato.jpg">
+  <link href='https://fonts.googleapis.com/css?family=Oxygen:700|Amaranth:700|Scada:700|Alegreya+Sans+SC:700|Overlock:900|Sarala:700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -29,7 +31,7 @@
 				</li>
 				<li>
 					<%= link_to "Create a Recipe", new_recipe_path %>
-				</li>
+				</li>	
 			<% else %>
 				<li>
 					<%= link_to "Home", root_path %>

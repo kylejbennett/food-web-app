@@ -1,43 +1,47 @@
-<% if @term %>
-	<h1>Search results for "<%= @term %>"</h1>
-<% else %>
-	<h1>Search the Web for Recipes</h1>
-<% end %>
+<div class="search_background">
+	<div class="search">
+		<% if @term %>
+			<h1>Search results for "<%= @term %>"</h1>
+		<% else %>
+			<h1>Search the Web for Recipes</h1>
+		<% end %>
 
-<%= form_tag "/recipes/search", method: :post do %>
-	<%= text_field_tag :term, @term, :placeholder => "Enter recipe search term here", size: 30 %>
-	<%= submit_tag "Search", class: "sub_form" %>
-<% end %>
+		<%= form_tag "/recipes/search", method: :post do %>
+			<%= text_field_tag :term, @term, :placeholder => "Enter recipe search term here", size: 30 %>
+			<%= submit_tag ">", class: "sub_form" %>
+		<% end %>
+	</div>
 
-<div class="content">
+	<div class="content">
 
-	<% if @term %>
+		<% if @term %>
 
-		Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
+			Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
 
-		<div class="results">
-			<% @recipes.each do |recipe| %>
-				<div class="recipe">
-					<%= image_tag recipe['image'] %>
-					<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
-					<h4><%= recipe['source'] %></h4>
-					<p>Rating: <%= recipe['rating'] %> Stars</p>
-					<p>Total Cook Time: <%= recipe['time'] %></p>
-					<p>Yield: <%= recipe['yield'] %></p>
-				</div>
-				<br>
-			<% end %>
-		</div>
-	<% end %>
+			<div class="results">
+				<% @recipes.each do |recipe| %>
+					<div class="recipe">
+						<%= image_tag recipe['image'] %>
+						<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
+						<h4><%= recipe['source'] %></h4>
+						<p>Rating: <%= recipe['rating'] %> Stars</p>
+						<p>Total Cook Time: <%= recipe['time'] %></p>
+						<p>Yield: <%= recipe['yield'] %></p>
+					</div>
+					<br>
+				<% end %>
+			</div>
+		<% end %>
 
-	<div class="clear"></div>
+		<div class="clear"></div>
 
-	<h1>User Recipes</h1>
+		<h1>User Recipes</h1>
 
-	<% @user_recipes.each do |recipe| %>
-		<%= recipe.recipeName %>
-		<br>
-	<% end %>
+		<% @user_recipes.each do |recipe| %>
+			<%= link_to recipe.recipeName, recipe_path(recipe) %>
+			<br>
+		<% end %>
 
+	</div>
 </div>
 

@@ -8,6 +8,6 @@
 
 <p><em>Instructions:</em> <br><%= @recipe.instructions %></p>
 
-<% if current_user.id == @recipe.user_id %>
+<% if current_user && current_user.id == @recipe.user_id %>
 	<%=link_to "Delete this Recipe", recipe_path, method: :delete, data: {confirm: "Permanently delete this recipe?"} %>
 <% end %>

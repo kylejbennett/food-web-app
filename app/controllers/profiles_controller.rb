@@ -10,15 +10,18 @@ class ProfilesController < ApplicationController
     @user = User.find(current_user[:id])
     
     if Profile.where(user_id: current_user.id).first == nil
-      @current_profile = Profile.create(user_id: current_user.id)
+      @profile = Profile.create(user_id: current_user.id)
     else
-      @current_profile = Profile.where(user_id: current_user.id).first
+      @profile = Profile.where(user_id: current_user.id).first
     end
     
   end
 
   def show
-    @current_profile = Profile.where(user_id: current_user.id).first
+    if current_user
+      @current_profile = Profile.where(user_id: current_user.id).first
+    end
+
     @profile = Profile.find(params[:id])
   end
 
@@ -27,9 +30,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @current_profile = Profile.where(user_id: current_user.id).first
+    @profile = Profile.where(user_id: current_user.id).first
 
-    if @current_profile.update(profile_params)
+    if @profile.update(profile_params)
       flash[:alert] = "Your profile was updated successfully."
       redirect_to @profile
     else

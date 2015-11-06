@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  post 'recipes/search' => 'recipes#search' 
+  post 'recipes/search' => 'recipes#search'
+
+  post 'recipes/next_page' => 'recipes#next_page'
+  post 'recipes/prev_page' => 'recipes#prev_page'
 
   root :to => 'home#index'
   

@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
     @user_recipes = Recipe.all
 
     @term = params[:term]
-    @results = search_recipe_by_term(@term)
+    @start = 0
+    @results = search_recipe_by_term(@term, @page)
 
   end
 
@@ -36,8 +37,23 @@ class RecipesController < ApplicationController
     # BY TERM
 
     @term = params[:term]
-    @results = search_recipe_by_term(@term)['matches']
-    @attribution = search_recipe_by_term(@term)['attribution']['html']
+    @start = 0
+    @hash = search_recipe_by_term(@term, @start)
+    @results = @hash['matches']
+    @result_count = @hash['totalMatchCount']
+    # @results = []
+
+    # for i in 0..19 do
+    #   food = search_recipe_by_term(@term, @start)['matches']
+
+    #   if !food.empty?
+    #     @results << food
+    #     @start+=10
+    #   else
+    #     break
+    #   end
+
+    # end
 
     # putting the relevant information into a hash
 
@@ -58,6 +74,19 @@ class RecipesController < ApplicationController
         "image" => recipe_info['images'][0]['hostedLargeUrl']
       }
     end
+
+    # @city_values = []
+
+    # for i in 0..19 do
+    #   biz = map_params(@location, @term, @radius, @offset)
+
+    #   if !biz.businesses.empty?
+    #     @city_values << biz
+    #     @offset+=20
+    #   else
+    #     break
+    #   end
+    # end
 
     render 'index'
 
@@ -96,6 +125,74 @@ class RecipesController < ApplicationController
 
   end
 
+  def next_page
+    @user_recipes = Recipe.all
+    # BY TERM
+
+    @term = params[:term]
+    @start = params[:start].to_i + 10
+    @hash = search_recipe_by_term(@term, @start)
+    @results = @hash['matches']
+    @result_count = @hash['totalMatchCount']
+
+    # putting the relevant information into a hash
+
+    @recipes = []
+
+    @results.each do |recipe|
+      recipe_info = get_recipe_by_id(recipe['id'])
+
+      @recipes << {
+        "name" => recipe['recipeName'],
+        "source" => recipe['sourceDisplayName'],
+        "id" => recipe['id'],
+        "ingredients" => recipe['ingredients'],
+        "rating" => recipe['rating'],
+        "time" => recipe_info['totalTime'],
+        "yield" => recipe_info['yield'],
+        "url" => recipe_info['source']['sourceRecipeUrl'], 
+        "image" => recipe_info['images'][0]['hostedLargeUrl']
+      }
+    end
+
+    render 'index'
+
+  end
+
+  def prev_page
+    @user_recipes = Recipe.all
+    # BY TERM
+
+    @term = params[:term]
+    @start = params[:start].to_i - 10
+    @hash = search_recipe_by_term(@term, @start)
+    @results = @hash['matches']
+    @result_count = @hash['totalMatchCount']
+
+    # putting the relevant information into a hash
+
+    @recipes = []
+
+    @results.each do |recipe|
+      recipe_info = get_recipe_by_id(recipe['id'])
+
+      @recipes << {
+        "name" => recipe['recipeName'],
+        "source" => recipe['sourceDisplayName'],
+        "id" => recipe['id'],
+        "ingredients" => recipe['ingredients'],
+        "rating" => recipe['rating'],
+        "time" => recipe_info['totalTime'],
+        "yield" => recipe_info['yield'],
+        "url" => recipe_info['source']['sourceRecipeUrl'], 
+        "image" => recipe_info['images'][0]['hostedLargeUrl']
+      }
+    end
+
+    render 'index'
+
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_created_by = Profile.find(@recipe[:user_id]) 
@@ -119,8 +216,8 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(allow)
   end
 
-  def search_recipe_by_term(term)
-    results = URI("http://api.yummly.com/v1/api/recipes?_app_id=4c2c2d95&_app_key=4445cd6b516d461810d81c6a455293b1&q=#{term}")
+  def search_recipe_by_term(term, start)
+    results = URI("http://api.yummly.com/v1/api/recipes?_app_id=4c2c2d95&_app_key=4445cd6b516d461810d81c6a455293b1&q=#{term}&maxResult=10&start=#{start}")
     hash = JSON.parse(Net::HTTP.get(results))
 
   end

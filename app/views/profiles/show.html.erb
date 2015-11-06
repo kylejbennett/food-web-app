@@ -20,7 +20,7 @@
 		<p>Email: <%= @profile.email %><p>
 	</li>
 	<li>
-		<p>Birthday: <%= @profile.birthdate %><p>
+		<p>Birthday: <%= @profile.birthdate.to_formatted_s(:long) %><p>
 	</li>
 	<li>
 		<p>Bio: <%= @profile.bio %><p>

@@ -1,7 +1,7 @@
 <div class="search_background">
 	<div class="search">
 		<% if @term %>
-			<h1>Search results for "<%= @term %>"</h1>
+			<h1><%= @result_count %> Search Results for "<%= @term %>"</h1>
 		<% else %>
 			<h1>Search the Web for Recipes</h1>
 		<% end %>
@@ -21,7 +21,11 @@
 			<div class="results">
 				<% @recipes.each do |recipe| %>
 					<div class="recipe">
-						<%= image_tag recipe['image'] %>
+						<% if recipe['image'] != nil %>
+							<%= image_tag recipe['image'] %>
+						<% else %>
+							<%= image_tag '/food_prep.jpg' %>
+						<% end %>
 						<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
 						<h4><%= recipe['source'] %></h4>
 						<p>Rating: <%= recipe['rating'] %> Stars</p>
@@ -29,6 +33,12 @@
 						<p>Yield: <%= recipe['yield'] %></p>
 					</div>
 					<br>
+				<% end %>
+				<% if @start != 0 %>
+					<%= link_to "Previous Page", recipes_prev_page_path(:term => @term, :start => @start), method: :post %> |
+					<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
+				<% else %>
+					<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
 				<% end %>
 			</div>
 		<% end %>

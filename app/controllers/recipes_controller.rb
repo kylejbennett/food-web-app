@@ -3,6 +3,10 @@ class RecipesController < ApplicationController
     @profiles = Profile.all
     @user_recipes = Recipe.where(recipeType: "user")
 
+    @profile = Profile.find_by(user_id: current_user.id)
+    @recipes = Recipe.where(user_id: @profile.user_id)
+    @favorites = Favorite.where(user_id: @profile.user_id)
+
     @term = params[:term]
     @start = 0
     @results = search_recipe_by_term(@term, @page)
@@ -35,6 +39,15 @@ class RecipesController < ApplicationController
   def search
     @profiles = Profile.all
     @user_recipes = Recipe.where(recipeType: "user")
+    
+    @profile = Profile.find_by(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: @profile.user_id)
+
+    @fav_recipes = []
+    @favorites.each do |favorite|
+      @fav_recipes << Recipe.find(favorite.recipe_id)
+    end
+
     # BY TERM
 
     @term = params[:term]
@@ -116,6 +129,10 @@ class RecipesController < ApplicationController
   def next_page
     @profiles = Profile.all
     @user_recipes = Recipe.where(recipeType: "user")
+
+    @profile = Profile.find_by(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: @profile.user_id)
+
     # BY TERM
 
     @term = params[:term]
@@ -151,6 +168,10 @@ class RecipesController < ApplicationController
   def prev_page
     @profiles = Profile.all
     @user_recipes = Recipe.where(recipeType: "user")
+    
+    @profile = Profile.find_by(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: @profile.user_id)
+
     # BY TERM
 
     @term = params[:term]

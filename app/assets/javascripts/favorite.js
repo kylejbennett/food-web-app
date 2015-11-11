@@ -8,7 +8,7 @@ $(document).ready(function(){
 	});
 
 	$(".delete-fav").on("ajax:complete", function(event){   
-		$(event.currentTarget).parent().slideUp(1000) 
+		$(event.currentTarget).parent().parent().slideUp(1000) 
 	});
 
 });
@@ -23,7 +23,7 @@ $(document).on('page:load', function(event) {
 	});
 
 	$(".delete-fav").on("ajax:complete", function(event){   
-		$(event.currentTarget).parent().slideUp(1000) 
+		$(event.currentTarget).parent().parent().slideUp(1000) 
 	});
 
 });

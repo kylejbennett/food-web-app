@@ -79,7 +79,7 @@
 						<% end %>
 						<p>Total Cook Time: <%= recipe.time %></p>
 						<p>Yield: <%= recipe.yield %></p>
-						<%=link_to "Delete this Fav", favorites_destroy_path(:recipe_id => recipe.id), method: :post, remote: true %>
+						<%=link_to "Delete this Fav", favorites_destroy_path(:recipe_id => recipe.id), method: :post, remote: true, class: "delete-fav" %>
 					</div>
 				</div>
 			<% end %>

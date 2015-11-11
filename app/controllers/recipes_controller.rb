@@ -115,7 +115,7 @@ class RecipesController < ApplicationController
 
   def next_page
     @profiles = Profile.all
-    @user_recipes = Recipe.all
+    @user_recipes = Recipe.where(recipeType: "user")
     # BY TERM
 
     @term = params[:term]
@@ -150,7 +150,7 @@ class RecipesController < ApplicationController
 
   def prev_page
     @profiles = Profile.all
-    @user_recipes = Recipe.all
+    @user_recipes = Recipe.where(recipeType: "user")
     # BY TERM
 
     @term = params[:term]

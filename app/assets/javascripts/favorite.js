@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	$(".new_fav").on("ajax:complete", function(event){   
 		$(event.currentTarget).parent().hide();
-		// $(".added").show(); 
+		$(event.currentTarget).parent().next().show(); 
 	});
 
 	$(".delete-fav").on("ajax:complete", function(event){   
@@ -19,7 +19,7 @@ $(document).on('page:load', function(event) {
 
 	$(".new_fav").on("ajax:complete", function(event){   
 		$(event.currentTarget).parent().hide();
-		// $(".added").show(); 
+		$(event.currentTarget).parent().next().show(); 
 	});
 
 	$(".delete-fav").on("ajax:complete", function(event){   

@@ -1,11 +1,10 @@
 class RecipesController < ApplicationController
+  before_filter :set_variables, :only =>[:index, :search, :next_page, :prev_page]
+  before_filter :find_recipe, :only =>[:destroy, :update, :edit, :show]
+  
   def index
-    @profiles = Profile.all
-    @user_recipes = Recipe.where(recipeType: "user")
 
-    @profile = Profile.find_by(user_id: current_user.id)
     @recipes = Recipe.where(user_id: @profile.user_id)
-    @favorites = Favorite.where(user_id: @profile.user_id)
 
     @term = params[:term]
     @start = 0
@@ -37,21 +36,17 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @profiles = Profile.all
-    @user_recipes = Recipe.where(recipeType: "user")
-    
-    @profile = Profile.find_by(user_id: current_user.id)
-    @favorites = Favorite.where(user_id: @profile.user_id)
 
     @fav_recipes = []
+    
     @favorites.each do |favorite|
       @fav_recipes << Recipe.find(favorite.recipe_id)
     end
 
     # BY TERM
+    @start = 0
 
     @term = params[:term]
-    @start = 0
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
@@ -76,67 +71,16 @@ class RecipesController < ApplicationController
       }
     end
 
-    # @city_values = []
-
-    # for i in 0..19 do
-    #   biz = map_params(@location, @term, @radius, @offset)
-
-    #   if !biz.businesses.empty?
-    #     @city_values << biz
-    #     @offset+=20
-    #   else
-    #     break
-    #   end
-    # end
-
     render 'index'
-
-    # EACH
-    # @recipe_name = @results.first['recipeName']
-    # @recipe_id = @results.first['id']
-    # @recipe_source = @results.first['sourceDisplayName']
-    # @recipe_image = @results.first['imageUrlsBySize']['90']
-    # @recipe_course = @results.first['attributes']['course'][0]
-    # @recipe_cuisine = @results.first['attributes']['cuisine'][0]
-    # @recipe_ingredient_array = @results.first['ingredients']
-    # @recipe_rating = @results.first['rating']
-    # @recipe_time = @results.first["totalTimeInSeconds"]
-    
-    # BY ID
-
-    # @recipe_info = []
-
-    # @results.each do |recipe|
-    #    @recipe_info << get_recipe_by_id(recipe['id'])['images'][0]['hostedLargeUrl']
-    # end
-
-    # @recipe = get_recipe_by_id('Cheesy-Buffalo-Chicken-Bombs-1354950')
-
-    #   @recipe_sm_photo = @recipe['images'][0]['hostedSmallUrl']
-    #   @recipe_md_photo = @recipe['images'][0]['hostedMediumUrl']
-    #   @recipe_lg_photo = @recipe['images'][0]['hostedLargeUrl']
-
-    #   @yield = recipe['yield']
-    #   @total_time = recipe['totalTime']
-    #   @course = recipe['attributes']['course'][0]
-    #   @ingredient_array = recipe['ingredientLines']
-    #   @source = recipe['source']['sourceDisplayName']
-    #   @recipe_url = recipe['source']['sourceRecipeUrl']
-
 
   end
 
   def next_page
-    @profiles = Profile.all
-    @user_recipes = Recipe.where(recipeType: "user")
-
-    @profile = Profile.find_by(user_id: current_user.id)
-    @favorites = Favorite.where(user_id: @profile.user_id)
 
     # BY TERM
+    @start = params[:start].to_i + 10
 
     @term = params[:term]
-    @start = params[:start].to_i + 10
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
@@ -166,21 +110,15 @@ class RecipesController < ApplicationController
   end
 
   def prev_page
-    @profiles = Profile.all
-    @user_recipes = Recipe.where(recipeType: "user")
-    
-    @profile = Profile.find_by(user_id: current_user.id)
-    @favorites = Favorite.where(user_id: @profile.user_id)
 
     # BY TERM
 
-    @term = params[:term]
     @start = params[:start].to_i - 10
+
+    @term = params[:term]
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
-
-    # putting the relevant information into a hash
 
     @recipes = []
 
@@ -205,16 +143,14 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
     @recipe_created_by = Profile.find(@recipe[:user_id])
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
       flash[:notice] = "Recipe info updated!"
@@ -226,13 +162,24 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    
     @recipe.destroy
     flash[:alert] = "Recipe has been deleted"
     redirect_to recipes_path
   end
 
   private
+
+  def set_variables
+    @profile = Profile.find_by(user_id: current_user.id)
+    @profiles = Profile.all
+    @user_recipes = Recipe.where(recipeType: "user")
+    @favorites = Favorite.where(user_id: @profile.user_id)
+  end
+
+  def find_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
   def recipe_params
     allow = [:recipeName, :source, :url, :course, :cuisine, :time, :yield, :ingredients, :instructions, :user_id, :avatar, :recipeType]

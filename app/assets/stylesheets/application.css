@@ -19,7 +19,22 @@
  }
 
  .header{
+ 	position: absolute;
+ 	top: 50px;
+ 	right: 20px;
  	height: 150px;
+ }
+
+ .header li{
+ 	list-style: none;
+ }
+
+ .header a{
+ 	color: white;
+ 	text-decoration: none;
+ }
+ .header a:hover{
+ 	color: #6FA60D;
  }
 
 .alert-warning{

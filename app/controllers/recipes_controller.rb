@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
-
-    @user_recipes = Recipe.all
+    @profiles = Profile.all
+    @user_recipes = Recipe.where(recipeType: "user")
 
     @term = params[:term]
     @start = 0
@@ -33,7 +33,8 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @user_recipes = Recipe.all
+    @profiles = Profile.all
+    @user_recipes = Recipe.where(recipeType: "user")
     # BY TERM
 
     @term = params[:term]
@@ -41,19 +42,6 @@ class RecipesController < ApplicationController
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
-    # @results = []
-
-    # for i in 0..19 do
-    #   food = search_recipe_by_term(@term, @start)['matches']
-
-    #   if !food.empty?
-    #     @results << food
-    #     @start+=10
-    #   else
-    #     break
-    #   end
-
-    # end
 
     # putting the relevant information into a hash
 
@@ -126,6 +114,7 @@ class RecipesController < ApplicationController
   end
 
   def next_page
+    @profiles = Profile.all
     @user_recipes = Recipe.all
     # BY TERM
 
@@ -160,6 +149,7 @@ class RecipesController < ApplicationController
   end
 
   def prev_page
+    @profiles = Profile.all
     @user_recipes = Recipe.all
     # BY TERM
 
@@ -181,7 +171,7 @@ class RecipesController < ApplicationController
         "source" => recipe['sourceDisplayName'],
         "id" => recipe['id'],
         "ingredients" => recipe['ingredients'],
-        "rating" => recipe['rating'],
+        "rating" => recipe['rating'], 
         "time" => recipe_info['totalTime'],
         "yield" => recipe_info['yield'],
         "url" => recipe_info['source']['sourceRecipeUrl'], 
@@ -195,11 +185,23 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_created_by = Profile.find(@recipe[:user_id]) 
+    @recipe_created_by = Profile.find(@recipe[:user_id])
+  end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      flash[:notice] = "Recipe info updated!"
+      redirect_to @recipe
+    else
+      flash[:alert] = "There was a problem updating your Recipe"
+    end
+
   end
 
   def destroy
@@ -212,7 +214,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    allow = [:recipeName, :source, :url, :course, :cuisine, :time, :yield, :instructions, :user_id, :avatar]
+    allow = [:recipeName, :source, :url, :course, :cuisine, :time, :yield, :ingredients, :instructions, :user_id, :avatar, :recipeType]
     params.require(:recipe).permit(allow)
   end
 

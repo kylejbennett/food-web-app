@@ -1,26 +1,33 @@
-<h1>Add a Recipe!</h1>
+<div class="new">
 
-<div class="recipe_form">
+	<h1>Add a Recipe!</h1>
 
-	<%= form_for Recipe.new, :html => {:multipart =>true} do |f|%>
-		<%= f.label :recipeName%><br>
-		<%= f.text_field :recipeName%><br>
-		<%= f.label :source %><br>
-		<%= f.text_field :source %><br>
-		<%= f.label :url %><br>
-		<%= f.text_field :url %><br>
-		<%= f.label :course %><br>
-		<%= f.text_field :course %><br>
-		<%= f.label :cuisine %><br>
-		<%= f.text_field :cuisine %><br>
-		<%= f.label :time %><br>
-		<%= f.text_field :time %><br>
-		<%= f.label :yield %><br>
-		<%= f.text_field :yield %><br>
-		<%= f.label :instructions%><br>
-		<%= f.text_area :instructions%><br>
-		<%= f.file_field :avatar %><br>
-		<%= f.submit :create, data: {disable_with: "Submitting..."} %>
-	<% end %>
+	<div class="recipe_form">
+
+		<%= form_for Recipe.new, :html => {:multipart =>true} do |f|%>
+			<%= f.label :recipeName%><br>
+			<%= f.text_field :recipeName%><br>
+			<%= f.label :source %><br>
+			<%= f.text_field :source %><br>
+			<%= f.label :url %><br>
+			<%= f.text_field :url %><br>
+			<%= f.label :course %><br>
+			<%= f.text_field :course %><br>
+			<%= f.label :cuisine %><br>
+			<%= f.text_field :cuisine %><br>
+			<%= f.label :time %><br>
+			<%= f.text_field :time %><br>
+			<%= f.label :yield %><br>
+			<%= f.text_field :yield %><br>
+			<%= f.label :ingredients%><br>
+			<%= f.text_area :ingredients%><br>
+			<%= f.label :instructions%><br>
+			<%= f.text_area :instructions%><br>
+			<%= f.file_field :avatar %><br>
+			<%= f.hidden_field :recipeType, :value =>"user" %><br>
+			<%= f.submit :create, data: {disable_with: "Submitting..."} %>
+		<% end %>
+
+	</div>
 
 </div>

@@ -1,3 +1,79 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ## INDEX ##
+
+.community{
+	background-color: #6FA60D;
+}
+
+// ## SHOW ##
+
+.show{
+
+	background-color: #6FA60D;
+
+	.content{
+
+		background-color: white;
+		width: 900px;
+		margin: 100px auto;
+		padding: 25px;
+		border-radius: 5px;
+
+		.profile{
+			text-align: center;
+
+			li{
+				list-style: none;
+			}
+		}
+
+		.container{
+			width: 100%;
+			margin-top: 50px;
+
+			h1{
+				text-align: center;
+			}
+
+			.row{
+
+				display: block;
+				height: 200px;
+
+				.info{
+
+					a{
+						text-decoration: none;
+						color: #6FA60D;
+					}
+
+					a:hover{
+						color: blue;
+					}
+
+					h4{
+						color: #424242;
+					}
+					p{
+						a{
+							color: blue;
+						}
+					}
+				}
+
+				.image{
+					text-align: center;
+					padding-top: 15px;
+
+					img{
+						margin-right: 20px;
+						height: 150px;
+					}
+				}
+			}
+		}
+	}
+}

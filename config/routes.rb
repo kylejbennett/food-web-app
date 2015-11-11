@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'favorites/create'
+
+  get 'favorites/destroy'
+
   post 'recipes/search' => 'recipes#search'
 
   post 'recipes/next_page' => 'recipes#next_page'
   post 'recipes/prev_page' => 'recipes#prev_page'
+
+  post 'favorites/create' => 'favorites#create'
+  post 'favorites/destroy' => 'favorites#destroy'
 
   root :to => 'home#index'
   

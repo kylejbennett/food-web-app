@@ -8,9 +8,10 @@
 	background-size: cover;
 
 	.search{
+		height: 300px;
+		padding-top: 80px;
 		text-align: center;
 		background-color: rgba(0,0,0,0.7);
-		padding: 50px;
 
 		h1{
 			font-family: 'Scada';
@@ -24,13 +25,23 @@
 			text-align: center;
 		}
 
-		.sub_form{
+		form{
+			margin-top: 20px;
 			height: 50px;
-			width: 50px;
-			background-color: #6FA60D;
-			border: none;
-			font-size: 20pt;
-			font-weight: bold;
+
+			.sub_form{
+
+				height: 40px;
+				width: 40px;
+				background-color: #6FA60D;
+				border: none;
+				font-size: 20pt;
+				font-weight: bold;
+			}
+
+			.sub_form:hover{
+				border: 2px solid black;
+			}
 		}
 	}
 }
@@ -43,21 +54,88 @@
 	padding: 25px;
 	border-radius: 5px;
 
-	.results{
-
+	.container{
+		width: 100%;
 		margin-top: 50px;
 
-		.recipe{
+		.row{
 
 			display: block;
 			height: 200px;
 
-			img{
-				float: left;
-				margin-right: 20px;
-				width: 250px;
+			.info{
+
+				a{
+					text-decoration: none;
+					color: #6FA60D;
+				}
+
+				a:hover{
+					color: blue;
+				}
+
+				h4{
+					color: #424242;
+				}
+
+				.fav{
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					right: 245px;
+					bottom: 10px;
+
+					a{
+						text-decoration: none;
+						text-align: center;
+						color: white;
+						font-size: 20pt;
+						background-color: #6FA60D;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border-radius: 25px;
+						padding-top: 4px;
+					}
+				}
+
+				.added{
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					right: 245px;
+					bottom: 10px;
+
+					p{
+						text-decoration: none;
+						text-align: center;
+						color: white;
+						font-size: 20pt;
+						background-color: #6FA60D;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border-radius: 25px;
+						padding-top: 4px;
+					}
+				}
+
+				p{
+					a{
+						color: blue;
+					}
+				}
 			}
 
+			.image{
+				text-align: center;
+				padding-top: 15px;
+
+				img{
+					margin-right: 20px;
+					height: 150px;
+				}
+			}
 		}
 	}
 
@@ -65,3 +143,41 @@
 		clear: both;
 	}
 }
+
+// ## SHOW ##
+
+
+.show{
+
+	background-color: #6FA60D;
+	padding: 50px;
+
+	.user_recipe{
+
+		border-radius: 10px;
+		background-color: white;
+		width: 900px;
+		margin: 0 auto;
+		text-align: center;
+		padding: 25px;
+
+		img{
+			width: 500px;
+			border-radius: 5px;
+		}
+
+		em{
+			color: #6FA60D;
+		}
+
+	}
+}
+
+// ## CREATE ##
+
+.new{
+	background-color: #6FA60D;
+	text-align: center;
+}
+
+

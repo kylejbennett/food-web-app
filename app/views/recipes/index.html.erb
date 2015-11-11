@@ -1,3 +1,5 @@
+
+
 <div class="search_background">
 	<div class="search">
 		<% if @term %>
@@ -18,19 +20,38 @@
 
 			Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
 
-			<div class="results">
+			<div class="container">
 				<% @recipes.each do |recipe| %>
-					<div class="recipe">
-						<% if recipe['image'] != nil %>
-							<%= image_tag recipe['image'] %>
-						<% else %>
-							<%= image_tag '/food_prep.jpg' %>
-						<% end %>
-						<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
-						<h4><%= recipe['source'] %></h4>
-						<p>Rating: <%= recipe['rating'] %> Stars</p>
-						<p>Total Cook Time: <%= recipe['time'] %></p>
-						<p>Yield: <%= recipe['yield'] %></p>
+					<div class="row">
+						<div class="image col-md-4">
+							<% if recipe['image'] != nil %>
+								<%= image_tag recipe['image'] %>
+							<% else %>
+								<%= image_tag '/food_prep.jpg' %>
+							<% end %>
+						</div>
+						<div class="info col-md-8">
+							<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
+							<h4><%= recipe['source'] %></h4>
+							<p>Rating: <%= recipe['rating'] %> Stars</p>
+							<p>Total Cook Time: <%= recipe['time'] %></p>
+							<p>Yield: <%= recipe['yield'] %></p>
+
+							<div class="fav">
+								<%=link_to "+", favorites_create_path(
+								:imageUrl => recipe['image'],
+								:recipeName => recipe['name'],
+								:source => recipe['source'],
+								:url => recipe['url'],
+								:time => recipe['time'],
+								:yield => recipe['yield']), 
+								method: :post, remote: true, class: "new_fav" %>
+								<div class="added">
+									<p>√</p>
+								</div>
+							</div>
+							
+						</div>
 					</div>
 					<br>
 				<% end %>
@@ -42,16 +63,34 @@
 				<% end %>
 			</div>
 		<% end %>
+		<div class="container">
+			<h1>User Recipes</h1>
 
-		<div class="clear"></div>
-
-		<h1>User Recipes</h1>
-
-		<% @user_recipes.each do |recipe| %>
-			<%= link_to recipe.recipeName, recipe_path(recipe) %>
-			<br>
-		<% end %>
-
+			<% @user_recipes.each do |recipe| %>
+				<div class="row">
+					<div class="image col-md-4">
+						<% if recipe.avatar != nil %>
+							<%= image_tag recipe.avatar %>
+						<% else %>
+							<%= image_tag '/food_prep.jpg' %>
+						<% end %>
+					</div>
+					<div class="info col-md-8">
+						<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+						<h4><%= recipe.source %></h4>
+						<p>Total Cook Time: <%= recipe.time %></p>
+						<p>Yield: <%= recipe.yield %></p>
+						<p>Added By: <%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></p>
+						<div class="fav">
+							<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
+						</div>
+						<div class="added">
+							<p>√</p>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
 

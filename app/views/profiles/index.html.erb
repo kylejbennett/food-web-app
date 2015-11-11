@@ -1,7 +1,11 @@
-<h1>Foodie Community</h1>
+<div class="community">
 
-<% @profiles.each do |profile| %>
+	<h1>Foodie Community</h1>
 
-	<h3><%= link_to profile.username, profile_path(profile) %></h3>
+	<% @profiles.each do |profile| %>
 
-<% end %>
+		<h3><%= link_to profile.username, profile_path(profile) %></h3>
+
+	<% end %>
+
+</div>

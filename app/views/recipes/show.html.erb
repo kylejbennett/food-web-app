@@ -1,13 +1,22 @@
-<h1><%= @recipe.recipeName %></h1>
+<div class="show">
+	<div class="user_recipe">
+		<h1><%= @recipe.recipeName %></h1>
 
-<%= image_tag @recipe.avatar %>
-<h4><em>Added by:</em>  <%= @recipe_created_by.username %></h4>
-<p><em>Source:</em>  <%= link_to @recipe.source, @recipe.url, :target=>"blank" %></p>
-<p><em>Total Cooking Time:</em>  <%= @recipe.time %></p>
-<p><em>Yield:</em>  <%= @recipe.yield %></p>
+		<%= image_tag @recipe.avatar %>
+			<h4><em>Added by:</em>  <%= @recipe_created_by.username %></h4>
+		<% if @recipe.url? %>
+			<p><em>Source:</em>  <%= link_to @recipe.source, @recipe.url, :target=>"blank" %></p>
+		<% end %>
+		<p><em>Total Cooking Time:</em>  <%= @recipe.time %></p>
+		<p><em>Yield:</em>  <%= @recipe.yield %></p>
 
-<p><em>Instructions:</em> <br><%= @recipe.instructions %></p>
+		<p><em>Ingredients:</em> <br><%= @recipe.ingredients %></p>
 
-<% if current_user && current_user.id == @recipe.user_id %>
-	<%=link_to "Delete this Recipe", recipe_path, method: :delete, data: {confirm: "Permanently delete this recipe?"} %>
-<% end %>
+		<p><em>Instructions:</em> <br><%= @recipe.instructions %></p>
+
+		<% if current_user && current_user.id == @recipe.user_id %>
+			<%=link_to "Delete this Recipe", recipe_path, method: :delete, data: {confirm: "Permanently delete this recipe?"} %> |
+			<%=link_to "Edit this Recipe", edit_recipe_path %>
+		<% end %>
+	</div>
+</div>

@@ -1,28 +1,88 @@
 
-<% if @profile == @current_profile %>
-	<h1>Your Profile</h1>
-	<p><%= link_to "Edit Your Profile", new_profile_path %></p>
-<% else %>
-	<h1><%= @profile.username %>'s Profile</h1>
-<% end %>
+<div class="show">
+	<div class="content">
+		<div class="profile">
+			<% if @profile == @current_profile %>
+				<h1>Your Profile</h1>
+				<p><%= link_to "Edit Your Profile", new_profile_path %></p>
+			<% else %>
+				<h1><%= @profile.username %>'s Profile</h1>
+			<% end %>
 
-<ul>
-	<li>
-		<h2><%= @profile.username %></h2>
-	</li>
-	<li>
-		<p>Name: <%= @profile.fname %> <%= @profile.lname %><p>
-	</li>
-	<li>
-		<%= image_tag @profile.avatar.url(:medium) %>
-	</li>
-	<li>
-		<p>Email: <%= @profile.email %><p>
-	</li>
-	<li>
-		<p>Birthday: <%= @profile.birthdate.to_formatted_s(:long) %><p>
-	</li>
-	<li>
-		<p>Bio: <%= @profile.bio %><p>
-	</li>
-</ul>
+			<ul>
+				<li>
+					<h2><%= @profile.username %></h2>
+				</li>
+				<li>
+					<p>Name: <%= @profile.fname %> <%= @profile.lname %><p>
+				</li>
+				<li>
+					<%= image_tag @profile.avatar.url(:medium) %>
+				</li>
+				<li>
+					<p>Email: <%= @profile.email %><p>
+				</li>
+				<li>
+					<p>Birthday: <%= @profile.birthdate.to_formatted_s(:long) %><p>
+				</li>
+				<li>
+					<p>Bio: <%= @profile.bio %><p>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="container">
+			<% if @profile == @current_profile %>
+				<h1>Recipes that you've contributed</h1>
+			<% else %>
+				<h1>Recipes Contributed by <%= @profile.username %></h1>
+			<% end %>
+			<% @recipes.each do |recipe| %>
+				<div class="row">
+					<div class="image col-md-4">
+						<% if recipe.avatar != nil %>
+							<%= image_tag recipe.avatar %>
+						<% else %>
+							<%= image_tag '/food_prep.jpg' %>
+						<% end %>
+					</div>
+					<div class="info col-md-8">
+						<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+						<h4><%= recipe.source %></h4>
+						<p>Total Cook Time: <%= recipe.time %></p>
+						<p>Yield: <%= recipe.yield %></p>
+					</div>
+				</div>
+			<% end %>
+			<br>
+			<h1>Favorites</h1>
+			<% @fav_recipes.each do |recipe| %>
+				<div class="row">
+					<div class="image col-md-4">
+						<% if recipe.avatar? %>
+							<%= image_tag recipe.avatar %>
+						<% elsif recipe.imageUrl %>
+							<%= image_tag recipe.imageUrl %>
+						<%else %>
+							<%= image_tag '/food_prep.jpg' %>
+						<% end %>
+					</div>
+					<div class="info col-md-8">
+						<% if recipe.recipeType == "user" %>
+							<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+						<% elsif recipe.recipeType == "web" %>
+							<h3><%= link_to recipe.recipeName, recipe.url, :target =>"blank" %></h3>
+						<% end %>
+						<h4><%= recipe.source %></h4>
+						<% if recipe.user_id? %>
+							<h4><%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></h4>
+						<% end %>
+						<p>Total Cook Time: <%= recipe.time %></p>
+						<p>Yield: <%= recipe.yield %></p>
+						<%=link_to "Delete this Fav", favorites_destroy_path(:recipe_id => recipe.id), method: :post, remote: true %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

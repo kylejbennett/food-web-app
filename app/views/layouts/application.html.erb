@@ -2,12 +2,14 @@
 <html>
 <head>
   <title>FoodProj</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="http://transitionculture.org/wp-content/uploads/potato.jpg">
   <link href='https://fonts.googleapis.com/css?family=Oxygen:700|Amaranth:700|Scada:700|Alegreya+Sans+SC:700|Overlock:900|Sarala:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -21,7 +23,7 @@
 					<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 				</li>
 				<li>
-					<%= link_to "Create Profile", new_profile_path %>
+					<%= link_to "My Profile", profile_path(current_user) %>
 				</li>
 				<li>
 					<%= link_to "Food Community", profiles_path %>

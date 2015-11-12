@@ -43,6 +43,5 @@ class FavoritesController < ApplicationController
   	@recipe = Recipe.find(params[:recipe_id])
   	@favorite = Favorite.where(user_id: @user, recipe_id: @recipe).first
     @favorite.destroy
-    flash[:notice] = "Favorite has been removed"
   end
 end

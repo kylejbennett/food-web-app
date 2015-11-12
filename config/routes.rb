@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'favorites/create'
-
+  get 'favorites/show'
   get 'favorites/destroy'
 
   post 'recipes/search' => 'recipes#search'

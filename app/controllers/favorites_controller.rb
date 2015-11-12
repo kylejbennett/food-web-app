@@ -22,6 +22,22 @@ class FavoritesController < ApplicationController
 
   end
 
+  def show
+  	if current_user
+      @current_profile = Profile.where(user_id: current_user.id).first
+    end
+
+    @profiles = Profile.all
+    @profile = Profile.find(current_user.id)
+    @recipes = Recipe.where(user_id: @profile.user_id)
+    @favorites = Favorite.where(user_id: @profile.user_id)
+    
+    @fav_recipes = []
+    @favorites.each do |favorite|
+      @fav_recipes << Recipe.find(favorite.recipe_id)
+    end 
+  end
+
   def destroy
   	@user = User.find(current_user.id)
   	@recipe = Recipe.find(params[:recipe_id])

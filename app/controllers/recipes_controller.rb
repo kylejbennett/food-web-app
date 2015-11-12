@@ -3,8 +3,9 @@ class RecipesController < ApplicationController
   before_filter :find_recipe, :only =>[:destroy, :update, :edit, :show]
   
   def index
-
-    @recipes = Recipe.where(user_id: @profile.user_id)
+    if current_user
+      @recipes = Recipe.where(user_id: @profile.user_id)
+    end
 
     @term = params[:term]
     @start = 0
@@ -37,10 +38,12 @@ class RecipesController < ApplicationController
 
   def search
 
-    @fav_recipes = []
-    
-    @favorites.each do |favorite|
-      @fav_recipes << Recipe.find(favorite.recipe_id)
+    if current_user
+      @fav_recipes = []
+      
+      @favorites.each do |favorite|
+        @fav_recipes << Recipe.find(favorite.recipe_id)
+      end
     end
 
     # BY TERM
@@ -171,10 +174,14 @@ class RecipesController < ApplicationController
   private
 
   def set_variables
-    @profile = Profile.find_by(user_id: current_user.id)
+    if current_user
+      @profile = Profile.find_by(user_id: current_user.id)
+      @favorites = Favorite.where(user_id: @profile.user_id)
+      @favorites = Favorite.where(user_id: @profile.user_id)
+    end
     @profiles = Profile.all
     @user_recipes = Recipe.where(recipeType: "user")
-    @favorites = Favorite.where(user_id: @profile.user_id)
+    
   end
 
   def find_recipe

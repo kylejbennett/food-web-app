@@ -1,0 +1,60 @@
+<div class="box">
+
+	<h1>Your Recipes</h1>
+
+	<div class="container">
+		<div class="row">	
+			<div class="favorites col-md-7">
+				<h1>Favorites</h1>
+				<% @fav_recipes.each do |recipe| %>
+					<div class="row">
+						<div class="image col-md-12">
+							<% if recipe.recipeType == "user" %>
+								<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+							<% elsif recipe.recipeType == "web" %>
+								<h3><%= link_to recipe.recipeName, recipe.url, :target =>"blank" %></h3>
+							<% end %>
+							<% if recipe.avatar? %>
+								<%= image_tag recipe.avatar %>
+							<% elsif recipe.imageUrl %>
+								<%= image_tag recipe.imageUrl %>
+							<%else %>
+								<%= image_tag '/food_prep.jpg' %>
+							<% end %>
+							<h4><%= recipe.source %></h4>
+							<% if recipe.user_id? %>
+								<h4><%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></h4>
+							<% end %>
+							<p>Total Cook Time: <%= recipe.time %></p>
+							<p>Yield: <%= recipe.yield %></p>
+							<%=link_to "Delete this Fav", favorites_destroy_path(:recipe_id => recipe.id), method: :post, remote: true, class: "delete-fav" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<div class="favorites col-md-1"></div>
+			<div class="contributions col-md-4">
+				<% if @profile == @current_profile %>
+					<h1>Recipes that you've contributed</h1>
+				<% else %>
+					<h1>Recipes Contributed by <%= @profile.username %></h1>
+				<% end %>
+				<% @recipes.each do |recipe| %>
+					<div class="row">
+						<div class="list col-md-12">
+							<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+							<% if recipe.avatar != nil %>
+								<%= image_tag recipe.avatar %>
+							<% else %>
+								<%= image_tag '/food_prep.jpg' %>
+							<% end %>
+							<h4><%= recipe.source %></h4>
+							<p>Total Cook Time: <%= recipe.time %></p>
+							<p>Yield: <%= recipe.yield %></p>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

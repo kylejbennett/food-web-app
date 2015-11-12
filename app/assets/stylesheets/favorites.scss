@@ -1,3 +1,36 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box{
+	background-color: #6FA60D;
+	
+	.container{
+		background-color: white;
+		border-radius: 10px;
+
+		.favorites{
+			.image{
+				background-color: rgba(0,0,0,0.2);
+				margin-bottom: 10px;
+
+				img{
+					width: 100%;
+				}
+			}
+		}
+
+		.contributions{
+
+
+			.list{
+				background-color: rgba(0,0,0,0.2);
+				margin-bottom: 10px;
+
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+}

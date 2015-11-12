@@ -23,57 +23,24 @@
 		border-radius: 5px;
 
 		.profile{
-			text-align: center;
-
-			li{
-				list-style: none;
-			}
-		}
-
-		.container{
-			width: 100%;
-			margin-top: 50px;
+			text-align: left;
 
 			h1{
 				text-align: center;
 			}
 
-			.row{
+			h2{
+				color: #6FA60D;
+			}
 
-				display: block;
-				height: 200px;
-
-				.info{
-
-					a{
-						text-decoration: none;
-						color: #6FA60D;
-					}
-
-					a:hover{
-						color: blue;
-					}
-
-					h4{
-						color: #424242;
-					}
-					p{
-						a{
-							color: blue;
-						}
-					}
-				}
-
-				.image{
-					text-align: center;
-					padding-top: 15px;
-
-					img{
-						margin-right: 20px;
-						height: 150px;
-					}
-				}
+			li{
+				list-style: none;
+			}
+			p{
+				font-size: 14pt;
 			}
 		}
+
+		
 	}
 }

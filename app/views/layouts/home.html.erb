@@ -8,46 +8,69 @@
   <link rel="shortcut icon" href="http://transitionculture.org/wp-content/uploads/potato.jpg">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Oxygen:700|Amaranth:700|Scada:700|Alegreya+Sans+SC:700|Overlock:900|Sarala:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oswald|Montserrat|Arvo' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-	<div class="banner">
-		<div class="header">
-			<ul>
-				<% if current_user %>
-					<li>
-						<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-					</li>
-					<li>
-						<%= link_to "Your Profile", profile_path(@profile) %>
-					</li>
-					<li>
-						<%= link_to "Food Community", profiles_path %>
-					</li>
-					<li>
-						<%= link_to "Create a Recipe", new_recipe_path %>
-					</li>
-				<% else %>
-					<li>
-						<%= link_to "Sign Up", new_user_registration_path %>
-					</li>
-					<li>
-						<%= link_to "Sign In", new_user_session_path %>
-					</li>
-				<% end %>
-			</ul>
-		</div>
-
-		<% if flash[:notice] %>
-			<div class="alert alert-success"><%= flash[:notice] %></div>
-		<% end %>
-
-		<% if flash[:alert] %>
-			<div class="alert alert-warning"><%= flash[:alert] %></div>
-		<% end %>
-
-		<%= yield %>
+	<div class="banner"></div>
+	<div class="header">
+		<ul>
+			<% if current_user %>
+				<li>
+					<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+				</li>
+				<li>
+					<%= link_to "My Profile", profile_path(@profile) %>
+				</li>
+				<li>
+					<%= link_to "Food Community", profiles_path %>
+				</li>
+				<li>
+					<%= link_to "Create a Recipe", new_recipe_path %>
+				</li>
+				<li>
+					<%= link_to "My RecipeBox", favorites_show_path %>
+				</li>
+			<% else %>
+				<li>
+					<%= link_to "Sign Up", new_user_registration_path %>
+				</li>
+				<li>
+					<%= link_to "Sign In", new_user_session_path %>
+				</li>
+			<% end %>
+		</ul>
 	</div>
+
+	<% if flash[:notice] %>
+		<div class="alert alert-success"><%= flash[:notice] %></div>
+	<% end %>
+
+	<% if flash[:alert] %>
+		<div class="alert alert-warning"><%= flash[:alert] %></div>
+	<% end %>
+
+	<div class="layer">
+		<h1>COOKitUP</h1>
+		<div class="link">
+			<h3>Your One-stop-Shop for everything Recipes</h3>
+			<p><%= link_to "Get Cooking", new_user_registration_path %></p>
+		</div>
+	</div>
+
+	<%= yield %>
+
+	<div class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="left-foot col-md-4"></div>
+				<div class="middle-foot col-md-4"></div>
+				<div class="right-foot col-md-4"></div>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

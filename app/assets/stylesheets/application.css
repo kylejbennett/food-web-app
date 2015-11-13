@@ -38,23 +38,33 @@
  }
 
 .alert-warning{
+	z-index: 3;
+	position: absolute;
+	top: 40px;
+	left: 40%;
 	text-align: center;
-	height: 20px;
-	width: 200px;
-	margin-left: 10%;
-	color: red;
+	height: 40px;
+	width: 300px;
 	background-color: white;
 	border-radius: 5px;
-	opacity: 0.5;
+	opacity: 0.8;
+	font-family: 'Oswald';
+	font-size: 15pt;
+	padding-bottom: 15px;
 }
 
 .alert-success{
+	z-index: 3;
+	position: absolute;
+	top: 40px;
+	left: 40%;
 	text-align: center;
-	height: 20px;
-	width: 200px;
-	margin-left: 10%;
-	color: #15FF2B;
+	height: 40px;
+	width: 300px;
 	background-color: white;
 	border-radius: 5px;
-	opacity: 0.5;
+	opacity: 0.8;
+	font-family: 'Oswald';
+	font-size: 15pt;
+	padding-bottom: 15px;
 }

@@ -1,54 +1,134 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
 
-.banner{
-	width: 100%;
-	height: 700px;
-	background-image: url('/food_prep.jpg');
-	background-size: cover;
+	.banner{
+		width: 100%;
+		height: 800px;
+		content: ' ';
+	    display: block;
+	    position: relative;
+	    left: 0;
+	    top: 0;
+	    background-image: url('/food_prep.jpg');
+	    background-size: cover;
+	    background-attachment: fixed;
+	}
 
-	ul{
-		padding-right: 15px;
-		text-align: right;
+	.header{
+		margin-top: -40px;
+		position: fixed;
+		z-index: 2;
 
-		li{
-			padding-top: 10px;
-			list-style: none;
+		ul{
+			padding-right: 15px;
+			text-align: right;
 
-			a{
-				color: white;
-				text-decoration: none;
+			li{
+				padding-top: 10px;
+				list-style: none;
+
+				a{
+					font-family: 'Oswald';
+					color: #6FA60D;
+					text-decoration: none;
+				}
+
+				a:hover{
+					color: #DF5E30;
+				}
 			}
 		}
 	}
 
-	h1{
-		padding-top: 17%;
-		padding-left: 16%;
-	}
+	.layer{
+		height: 800px;
+		width: 100%;
+		position: absolute;
+		top: 10px;
+		z-index: 1;
 
-	p{
-		margin-top: 13%;
-		margin-left: 40%;
-		text-align: center;
-		width: 200px;
-		height: 30px;
-		padding-top: 5px;
-		color: white;
-		background-color: #6FA60D;
-		border-radius: 25px;
+		h1{
+			position: fixed;
+			margin-left: 50px;
+			font-family: 'Oswald';
+			font-size: 40pt;
+			color: #6FA60D;
+		}
 
-		a{
-			text-decoration: none;
-			color: white;
+		.link{
+			width: 600px;
+			margin: 300px auto;
+
+			h3{
+				text-align: center;
+				font-family: 'Amaranth';
+				font-size: 25pt;
+				color: black;
+				background-color: rgba(255, 255 ,255, 0.3);
+				border-radius: 15px;
+			}
+
+			p{
+				margin: 50px auto;
+				width: 250px;
+				height: 50px;
+				text-align: center;
+				color: white;
+				border: 3px solid #6FA60D;
+				border-radius: 15px;
+				font-family: 'Scada';
+				font-size: 20pt;
+				padding-top: 3px;
+
+				a{
+					text-decoration: none;
+					font-family: 'Oswald';
+					color: white;
+				}
+			}
+
+			p:hover{
+				background-color: #6FA60D;
+				border: 2px solid black;
+				a{
+					color: black;
+				}
+			}
 		}
 	}
 
-	p:hover{
-		border: 2px solid black;
-		a{
-			color: black;
+
+	
+
+	.about{
+		height: 600px;
+	}
+
+	.boxes{
+		.row{
+			height: 400px;
+			.left{
+				height: 100%;
+				background-color: #DF5E30;
+			}
+			.right{
+				height: 100%;
+				background-color: #6FA60D;
+			}
+		}
+	}
+
+	.footer{
+		.container-fluid{
+			.row{
+				height: 200px;
+
+				.col-md-4{
+					height: 100%;
+				}
+			}
 		}
 	}
 }

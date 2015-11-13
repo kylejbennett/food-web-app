@@ -1,6 +1,21 @@
+<div class="about">
 
-	<h1>Home Page</h1>
-	<p><%= link_to "Start Browsing", recipes_path %></p>
+</div>
+<div class="boxes container-fluid">
+	<div class="row">
+		<div class="left col-md-6">
+			<p><%= link_to "Search for Recipes", recipes_path %></p>
+		</div>
+		<div class="right col-md-6">
+			<% if @profile %>
+				<p><%= link_to "Browse your Favorites", favorites_show_path(@profile) %></p>
+			<% else %>
+				<p><%= link_to "Sign up Now", new_user_registration_path %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
+	
 
 
 

@@ -1,16 +1,28 @@
 <div class="about">
-
+	<div class="cook">
+		<p class="info">COOKitUP TAKES ALL OF THE BEST RECIPES FROM AROUND THE WEB AND PUTS THEM RIGHT AT YOUR FINGERTIPS!</p>
+		<p class="look"><%= link_to "Search for Recipes >>", recipes_path %></p>
+	</div>
 </div>
 <div class="boxes container-fluid">
 	<div class="row">
 		<div class="left col-md-6">
-			<p><%= link_to "Search for Recipes", recipes_path %></p>
+			<div class="blurb">
+				<h2>SEARCH THROUGH 1,000,000+ RECIPES FROM THE BEST RECIPES SOURCES THE WEB HAS TO OFFER.</h2>
+			</div>
+			<p class="box"><%= link_to "Search for Recipes >>", recipes_path %></p>
 		</div>
 		<div class="right col-md-6">
 			<% if @profile %>
-				<p><%= link_to "Browse your Favorites", favorites_show_path(@profile) %></p>
+				<div class="blurb">
+					<h2>EASILY SAVE AND SHARE ALL OF YOUR FAVORITE RECIPES AND KEEP THEM IN ONE PLACE.</h2>
+				</div>
+				<p class="box"><%= link_to "Browse your Favorites >>", favorites_show_path(@profile) %></p>
 			<% else %>
-				<p><%= link_to "Sign up Now", new_user_registration_path %></p>
+				<div class="blurb">
+					<h2>SIGN UP NOW AND TAKE AND VANTAGE OF ALL OF THE RECIPES THE WEB HAS TO OFFER.</h2>
+				</div>
+				<p class="box"><%= link_to "Sign up Now >>", new_user_registration_path %></p>
 			<% end %>
 		</div>
 	</div>

@@ -127,7 +127,7 @@
 					height: 50px;
 					position: absolute;
 					left: 270px;
-					bottom: 10px;
+					bottom: 50px;
 
 					p{
 						text-decoration: none;
@@ -272,7 +272,7 @@
 					height: 50px;
 					position: absolute;
 					right: 245px;
-					bottom: 10px;
+					bottom: 50px;
 
 					p{
 						text-decoration: none;
@@ -348,17 +348,22 @@
 
 .show{
 
-	background-color: #6FA60D;
+	background-image: url('/food_prep.jpg');
 	padding: 50px;
+	font-family: 'Oswald';
 
 	.user_recipe{
 
 		border-radius: 10px;
-		background-color: white;
+		background-color: rgba(255,255,255,0.6);
 		width: 900px;
-		margin: 0 auto;
+		margin: 150px auto;
 		text-align: center;
 		padding: 25px;
+
+		h1{
+			color: #6FA60D;
+		}
 
 		img{
 			width: 500px;
@@ -367,6 +372,16 @@
 
 		em{
 			color: #6FA60D;
+		}
+
+		a{
+			color: #DF5E30;
+			font-size: 15pt;
+			margin: 0 20px;
+		}
+
+		p{
+			font-size: 12pt;
 		}
 
 	}

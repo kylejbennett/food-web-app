@@ -83,8 +83,8 @@ class RecipesController < ApplicationController
   def next_page
 
     # BY TERM
-    @start = params[:start].to_i + 10
 
+    @start = params[:start].to_i + 10
     @term = params[:term]
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']
@@ -119,7 +119,6 @@ class RecipesController < ApplicationController
     # BY TERM
 
     @start = params[:start].to_i - 10
-
     @term = params[:term]
     @hash = search_recipe_by_term(@term, @start)
     @results = @hash['matches']

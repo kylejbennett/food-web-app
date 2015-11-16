@@ -1,7 +1,7 @@
 <div class="show">
 	<div class="user_recipe">
 		<h1><%= @recipe.recipeName %></h1>
-
+		<br>
 		<%= image_tag @recipe.avatar %>
 			<h4><em>Added by:</em>  <%= @recipe_created_by.username %></h4>
 		<% if @recipe.url? %>

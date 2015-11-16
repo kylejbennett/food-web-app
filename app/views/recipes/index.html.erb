@@ -14,137 +14,118 @@
 		<% end %>
 	</div>
 </div>
-<div class="super container-fluid">
-	<div class="full row">
-		<div class="web-left col-md-6">
-			<% if @term %>
-				<div class="content">
-					Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
-					<div class="search-results">
-						<% if @users_recipes %>
-							<% @users_recipes.each do |recipe| %>
-								<div class="main row">
-									<div class="image col-md-4">
-										<% if recipe.avatar != nil %>
-											<%= image_tag recipe.avatar %>
-										<% else %>
-											<%= image_tag '/food_prep.jpg' %>
-										<% end %>
-									</div>
-									<div class="recipe-info col-md-8">
-										<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
-										<h4><%= recipe.source %></h4>
-										<p>Total Cook Time: <%= recipe.time %></p>
-										<p>Yield: <%= recipe.yield %></p>
-										<p>Added By: <%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></p>
-										<% if @favorites.where(recipe_id: recipe.id).any? %>
-											<div class="saved">
-												<p>√</p>
-											</div>
-										<% else %>
-											<div class="fav">
-												<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
-												<p>add to RecipeBox!</p>
-											</div>
-											<div class="added">
-												<p>√</p>
-												<h2>Added to RecipeBox!</h2>
-											</div>
-										<% end %>
-									</div>
-								</div>
-							<% end %>
-						<% end %>
-					</div>
-					<div class="search-results container">
-						<% @recipes.each do |recipe| %>
-							<div class="main row">
-								<div class="image col-md-4">
-									<% if recipe['image'] != nil %>
-										<%= image_tag recipe['image'] %>
-									<% else %>
-										<%= image_tag '/food_prep.jpg' %>
-									<% end %>
-								</div>
-								<div class="recipe-info col-md-8">
-									<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
-									<h4><%= recipe['source'] %></h4>
-									<p>Rating: <%= recipe['rating'] %> Stars</p>
-									<p>Total Cook Time: <%= recipe['time'] %></p>
-									<p>Yield: <%= recipe['yield'] %></p>
-									<% if current_user %>
-										<div class="fav">
-											<%=link_to "+", favorites_create_path(
-											:imageUrl => recipe['image'],
-											:recipeName => recipe['name'],
-											:source => recipe['source'],
-											:url => recipe['url'],
-											:time => recipe['time'],
-											:yield => recipe['yield']), 
-											method: :post, remote: true, class: "new_fav" %>
-											<p>add to RecipeBox!</p>
-										</div>
-										<div class="added">
-											<p>√</p>
-											<h2>Added to RecipeBox!</h2>
-										</div>
-									<% end %>
-								</div>
+
+<% if current_user %>
+	<div class="recently_added">
+		<div class="user-results container-fluid">
+			<div class="main row">
+				<% @user_recipes.each do |recipe| %>
+					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)' >
+						
+						<% if @favorites.where(recipe_id: recipe.id).any? %>
+							<div class="saved">
+								<p>√</p>
 							</div>
-							<br>
-						<% end %>
-						<% if @start != 0 %>
-							<%= link_to "Previous Page", recipes_prev_page_path(:term => @term, :start => @start), method: :post %> |
-							<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
 						<% else %>
-							<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
-						<% end %>
-					</div>	
-				</div>
-			<% end %>
-		</div>
-		<div class="user-right col-md-6">
-			<% if current_user %>
-				<div class="recently_added">
-					<h1>Recently Added User Recipes</h1>
-					<div class="search-results container">
-						<% @user_recipes.each do |recipe| %>
-							<div class="main row">
-								<div class="image col-md-4">
-									<% if recipe.avatar != nil %>
-										<%= image_tag recipe.avatar %>
-									<% else %>
-										<%= image_tag '/food_prep.jpg' %>
-									<% end %>
-								</div>
-								<div class="recipe-info col-md-8">
-									<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
-									<h4><%= recipe.source %></h4>
-									<p>Total Cook Time: <%= recipe.time %></p>
-									<p>Yield: <%= recipe.yield %></p>
-									<p>Added By: <%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></p>
-									<% if @favorites.where(recipe_id: recipe.id).any? %>
-										<div class="saved">
-											<p>√</p>
-										</div>
-									<% else %>
-										<div class="fav">
-											<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
-											<p>add to RecipeBox!</p>
-										</div>
-										<div class="added">
-											<p>√</p>
-											<h2>Added to RecipeBox!</h2>
-										</div>
-									<% end %>
-								</div>
+							<div class="fav">
+								<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
+								<p>add to RecipeBox!</p>
+							</div>
+							<div class="added">
+								<p>√</p>
+								<h2>Added to RecipeBox!</h2>
 							</div>
 						<% end %>
 					</div>
-				</div>
-			<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>
+<div class="clear"></div>
+<% if @term %>
+	<div class="content">
+		Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
+		<div class="search-results container">
+			<% if @users_recipes %>
+				<% @users_recipes.each do |recipe| %>
+					<div class="main row">
+						<div class="image">
+							<% if recipe.avatar != nil %>
+								<%= image_tag recipe.avatar %>
+							<% else %>
+								<%= image_tag '/food_prep.jpg' %>
+							<% end %>
+						</div>
+						<div class="recipe-info col-md-8">
+							<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
+							<h4><%= recipe.source %></h4>
+							<p>Total Cook Time: <%= recipe.time %></p>
+							<p>Yield: <%= recipe.yield %></p>
+							<p>Added By: <%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></p>
+							<% if @favorites.where(recipe_id: recipe.id).any? %>
+								<div class="saved">
+									<p>√</p>
+								</div>
+							<% else %>
+								<div class="fav">
+									<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
+									<p>save to RecipeBox</p>
+								</div>
+								<div class="added">
+									<p>√</p>
+									<h2>Added to RecipeBox!</h2>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+			<% @recipes.each do |recipe| %>
+				<div class="main row">
+					<div class="image col-md-4">
+						<% if recipe['image'] != nil %>
+							<%= image_tag recipe['image'] %>
+						<% else %>
+							<%= image_tag '/food_prep.jpg' %>
+						<% end %>
+					</div>
+					<div class="recipe-info col-md-8">
+						<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
+						<h4><%= recipe['source'] %></h4>
+						<p>Rating: <%= recipe['rating'] %> Stars</p>
+						<p>Total Cook Time: <%= recipe['time'] %></p>
+						<p>Yield: <%= recipe['yield'] %></p>
+						<% if current_user %>
+							<div class="fav">
+								<%=link_to "+", favorites_create_path(
+								:imageUrl => recipe['image'],
+								:recipeName => recipe['name'],
+								:source => recipe['source'],
+								:url => recipe['url'],
+								:time => recipe['time'],
+								:yield => recipe['yield']), 
+								method: :post, remote: true, class: "new_fav" %>
+								<p>save to RecipeBox</p>
+							</div>
+							<div class="added">
+								<p>√</p>
+								<h2>Added to RecipeBox!</h2>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				<br>
+			<% end %>
+			<% if @start != 0 %>
+				<%= link_to "Previous Page", recipes_prev_page_path(:term => @term, :start => @start), method: :post %> |
+				<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
+			<% else %>
+				<%= link_to "Next Page", recipes_next_page_path(:term => @term, :start => @start), method: :post %>
+			<% end %>
+		</div>	
+	</div>
+<% end %>
+		
 
 

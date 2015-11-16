@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.super{
-	margin-right: 100px;
-	font-family: 'Oswald';
-}
-
 .search_background{
 	height: 100%;
 	background-image: url('/veg_background.jpg');
@@ -55,21 +50,23 @@
 .recently_added{
 
 	background-color: white;
-	width: 900px;
-	margin: 50px auto;
-	padding: 25px;
-	border-radius: 5px;
+	width: 100%;
+	overflow-x: scroll;
 
-	.search-results{
-		width: 100%;
-		margin-top: 50px;
+
+	.user-results{
+		width: 4000px;
+		margin-top: 10px;
 
 		.main{
 
-			display: block;
-			height: 200px;
-
-			.recipe-info{
+			display: inline-block;
+			width: 100%;
+			
+			.image{
+				width: 500px;
+				height: 400px;
+				background-size: cover;
 
 				a{
 					text-decoration: none;
@@ -88,7 +85,7 @@
 					width: 50px;
 					height: 50px;
 					position: absolute;
-					left: 270px;
+					left: 380px;
 					bottom: 50px;
 
 					a{
@@ -126,7 +123,7 @@
 					width: 225px;
 					height: 50px;
 					position: absolute;
-					left: 270px;
+					left: 380px;
 					bottom: 50px;
 
 					p{
@@ -157,8 +154,8 @@
 					width: 50px;
 					height: 50px;
 					position: absolute;
-					left: 270px;
-					bottom: 10px;
+					left: 380px;
+					bottom: 50px;
 
 					p{
 						text-decoration: none;
@@ -185,32 +182,29 @@
 				padding-top: 15px;
 
 				img{
-					margin-right: 20px;
 					height: 150px;
 				}
 			}
 		}
 	}
+}
 
-	.clear{
-		clear: both;
-	}
+.clear{
+	clear: both;
 }
 
 .content{
 
 	background-color: white;
-	width: 900px;
-	margin: 100px auto;
+	width: 1000px;
 	padding: 25px;
-	border-radius: 5px;
+	margin-left: 275px;
 
 	.search-results{
 		width: 100%;
 		margin-top: 50px;
 
 		.main{
-
 			display: block;
 			height: 200px;
 
@@ -303,7 +297,7 @@
 					height: 50px;
 					position: absolute;
 					right: 245px;
-					bottom: 10px;
+					bottom: 50px;
 
 					p{
 						text-decoration: none;
@@ -331,7 +325,6 @@
 				padding-top: 15px;
 
 				img{
-					margin-right: 20px;
 					height: 150px;
 				}
 			}

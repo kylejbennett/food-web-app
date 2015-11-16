@@ -54,7 +54,8 @@ class RecipesController < ApplicationController
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
 
-    @users_recipes = Recipe.where(["recipeName LIKE ?", "%#{@term}%"]).all
+    @users_recipes_all = Recipe.where(["recipeName LIKE ?", "%#{@term}%"]).all
+    @users_recipes = @users_recipes_all.where(recipeType: "user")
 
     # putting the relevant information into a hash
 
@@ -196,12 +197,18 @@ class RecipesController < ApplicationController
 
   def search_recipe_by_term(term, start)
     results = URI("http://api.yummly.com/v1/api/recipes?_app_id=4c2c2d95&_app_key=4445cd6b516d461810d81c6a455293b1&q=#{term}&maxResult=10&start=#{start}")
-    hash = JSON.parse(Net::HTTP.get(results))
+    x = Net::HTTP.get(results)
 
+    begin
+      hash = JSON.parse(x)
+    rescue StandardError
+      redirect_to recipes_path
+    end
   end
 
   def get_recipe_by_id(id)
     results = URI("http://api.yummly.com/v1/api/recipe/#{id}?_app_id=4c2c2d95&_app_key=4445cd6b516d461810d81c6a455293b1")
-    recipe = JSON.parse(Net::HTTP.get(results))
+    x = Net::HTTP.get(results)
+    recipe = JSON.parse(x)
   end
 end

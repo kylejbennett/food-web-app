@@ -1,36 +1,41 @@
 
-<div class="show">
-	<div class="content">
-		<div class="profile">
+<div class="top"></div>
+<div class="show-profile">
+	<div class="personal container">
+		<div class="profile row">
 			<% if @profile == @current_profile %>
 				<h1>Your Profile</h1>
 			<% else %>
 				<h1><%= @profile.username %>'s Profile</h1>
 			<% end %>
-
-			<ul>
-				<li>
-					<h2><%= @profile.username %></h2>
-				</li>
-				<li>
-					<p>Name: <%= @profile.fname %> <%= @profile.lname %><p>
-				</li>
-				<li>
-					<%= image_tag @profile.avatar.url(:medium) %>
-				</li>
-				<li>
-					<p>Email: <%= @profile.email %><p>
-				</li>
-				<li>
-					<p>Birthday: <%= @profile.birthdate.to_formatted_s(:long) %><p>
-				</li>
-				<li>
-					<p>Bio: <%= @profile.bio %><p>
-				</li>
-				<% if @profile == @current_profile %>
-					<p><%= link_to "Edit", new_profile_path %></p>
-				<% end %>
-			</ul>
+			<br>
+			<div class="col-md-6">
+				<%= image_tag @profile.avatar.url(:medium) %>
+			</div>
+			<div class="col-md-6">
+				<ul>
+					<li>
+						<h2><%= @profile.username %></h2>
+					</li>
+					<br>
+					<li>
+						<p>Name: <%= @profile.fname %> <%= @profile.lname %><p>
+					</li>
+					
+					<li>
+						<p>Email: <%= @profile.email %><p>
+					</li>
+					<li>
+						<p>Birthday: <%= @profile.birthdate.to_formatted_s(:long) %><p>
+					</li>
+					<li>
+						<p>Bio: <%= @profile.bio %><p>
+					</li>
+					<% if @profile == @current_profile %>
+						<p><%= link_to "Edit", new_profile_path %></p>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

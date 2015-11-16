@@ -2,10 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.super{
+	margin-right: 100px;
+	font-family: 'Oswald';
+}
+
 .search_background{
 	height: 100%;
 	background-image: url('/veg_background.jpg');
 	background-size: cover;
+	
 
 	.search{
 		height: 300px;
@@ -14,7 +20,7 @@
 		background-color: rgba(0,0,0,0.7);
 
 		h1{
-			font-family: 'Scada';
+			font-family: 'Oswald';
 			color: white;
 		}
 
@@ -50,20 +56,20 @@
 
 	background-color: white;
 	width: 900px;
-	margin: 100px auto;
+	margin: 50px auto;
 	padding: 25px;
 	border-radius: 5px;
 
-	.container{
+	.search-results{
 		width: 100%;
 		margin-top: 50px;
 
-		.row{
+		.main{
 
 			display: block;
 			height: 200px;
 
-			.info{
+			.recipe-info{
 
 				a{
 					text-decoration: none;
@@ -83,19 +89,36 @@
 					height: 50px;
 					position: absolute;
 					left: 270px;
-					bottom: 10px;
+					bottom: 50px;
 
 					a{
+						font-family: sans-serif;
 						text-decoration: none;
 						text-align: center;
 						color: white;
-						font-size: 20pt;
+						font-size: 25pt;
 						background-color: #DF5E30;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
 						border-radius: 25px;
-						padding-top: 4px;
+					}
+
+					p{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						position: relative;
+						left: -45px;
+						top: 5px;
+						color: #6FA60D;
+						visibility: hidden;
+					}
+				}
+
+				.fav:hover{
+					p{
+						visibility: visible;
 					}
 				}
 
@@ -120,9 +143,13 @@
 					}
 
 					h2{
-						font-size: 12pt;
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
 						color: #6FA60D;
-						float: right;
+						position: relative;
+						top: -20px;
+						left: -55px;
 					}
 				}
 
@@ -155,7 +182,6 @@
 			}
 
 			.image{
-				text-align: center;
 				padding-top: 15px;
 
 				img{
@@ -179,16 +205,16 @@
 	padding: 25px;
 	border-radius: 5px;
 
-	.container{
+	.search-results{
 		width: 100%;
 		margin-top: 50px;
 
-		.row{
+		.main{
 
 			display: block;
 			height: 200px;
 
-			.info{
+			.recipe-info{
 
 				a{
 					text-decoration: none;
@@ -208,19 +234,36 @@
 					height: 50px;
 					position: absolute;
 					right: 245px;
-					bottom: 10px;
+					bottom: 50px;
 
 					a{
+						font-family: sans-serif;
 						text-decoration: none;
 						text-align: center;
 						color: white;
-						font-size: 20pt;
+						font-size: 25pt;
 						background-color: #DF5E30;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
 						border-radius: 25px;
-						padding-top: 4px;
+					}
+
+					p{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						position: relative;
+						left: -45px;
+						top: 5px;
+						color: #6FA60D;
+						visibility: hidden;
+					}
+				}
+
+				.fav:hover{
+					p{
+						visibility: visible;
 					}
 				}
 
@@ -242,6 +285,16 @@
 						height: 50px;
 						border-radius: 25px;
 						padding-top: 10px;
+					}
+
+					h2{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						color: #6FA60D;
+						position: relative;
+						top: -20px;
+						left: -55px;
 					}
 				}
 
@@ -322,8 +375,114 @@
 // ## CREATE ##
 
 .new{
-	background-color: #6FA60D;
+	background-image: url('/red_onion_parsnip.jpg');
+	background-size: cover;
 	text-align: center;
+	padding: 50px 50px;
+
+	.recipe-form{
+		margin: 0 auto;
+		padding: 25px 25px;
+		text-align: center;
+		width: 800px;
+		background: rgba(255,255,255,0.6);
+		border-radius: 20px;
+		font-family: 'Oswald';
+
+		.new_recipe{
+			.field{
+				input{
+					width: 300px;
+					height: 40px;
+					font-size: 15pt;
+					text-align: center;
+				}
+
+				textarea{
+					width: 500px;
+					height: 160px;
+				}
+
+				#recipe_avatar{
+					margin: 10px auto;
+					font-size: 12pt;
+				}
+			}
+
+			.action{
+				input{
+					height: 40px;
+					width: 150px;
+					font-size: 15pt;
+				}
+			}
+			
+		}
+	}
 }
 
+// ## EDIT ##
 
+.edit-recipe{
+	padding-top: 10%;
+	background-image: url('/red_onion_parsnip.jpg');
+	background-size: cover;
+
+	.recipe-form{
+		margin: 0 auto;
+		padding: 25px 25px;
+		text-align: center;
+		width: 800px;
+		background: rgba(255,255,255,0.6);
+		border-radius: 20px;
+		font-family: 'Oswald';
+
+		h1{
+			font-size: 30pt;
+			color: #6FA60D;
+		}
+
+		a{
+			color: #DF5E30;
+			font-size: 12pt;
+		}
+
+		#recipe_avatar{
+			margin: 20px auto;
+		}
+
+		.field{
+			margin-bottom: 15px;
+
+			input{
+				width: 300px;
+				text-align: center;
+				height: 40px;
+				font-size: 15pt;
+				margin-bottom: 15px;
+			}
+
+			label{
+				font-size: 12pt;
+			}
+		}
+
+		.actions{
+			input{
+				height: 35px;
+				width: 100px;
+				background: none;
+				border: 2px solid #6FA60D;
+			}
+
+			input:hover{
+				background: #DF5E30;
+			}
+		}
+
+		textarea{
+			width: 500px;
+			height: 160px;
+		}
+	}	
+}

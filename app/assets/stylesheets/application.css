@@ -19,10 +19,20 @@
  }
 
  .header{
+ 	font-family: 'Oswald';
  	position: absolute;
  	top: 50px;
  	right: 20px;
  	height: 150px;
+ }
+
+ .header h1{
+ 	position: fixed;
+ 	left: 0;
+ 	margin-left: 50px;
+	font-family: 'Oswald';
+	font-size: 40pt;
+	color: #6FA60D;
  }
 
  .header li{

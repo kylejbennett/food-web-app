@@ -1,9 +1,13 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top{
+	height: 250px;
+	background-image: url('/food_prep.jpg');
+	background-size: cover;
+}
 
-.box{
-	background-color: #6FA60D;
+.recipebox{
 	
 	.container{
 		background-color: white;

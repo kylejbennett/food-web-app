@@ -1,60 +1,10 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// ## INDEX ##
-
-
-// ## SHOW ##
-
-.top{
-	height: 250px;
-	background-image: url('/food_prep.jpg');
-	background-size: cover;
-}
-
-.show-profile{
-	font-family: 'Oswald';
-	background: white;
-
-	.personal{
-		width: 900px;
-		margin: 50px auto;
-		padding: 25px;
-
-		.profile{
-			text-align: left;
-
-			h1{
-				text-align: center;
-				color: #6FA60D;
-			}
-
-			h2{
-				
-			}
-
-			li{
-				list-style: none;
-			}
-			p{
-				font-size: 14pt;
-			}
-		}
-
-		
-	}
-}
-
-// ## EDIT ##
-
-.edit-profile{
+.login{
 	height: 800px;
 	padding-top: 10%;
 	background-image: url('/tomato_wood.jpeg');
 	background-size: cover;
 
-	.profile-form{
+	.form{
 		margin: 0 auto;
 		padding: 25px 25px;
 		text-align: center;
@@ -71,10 +21,6 @@
 		a{
 			color: #DF5E30;
 			font-size: 12pt;
-		}
-
-		#profile_avatar{
-			margin: 20px auto;
 		}
 
 		.field{

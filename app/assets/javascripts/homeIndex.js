@@ -3,7 +3,7 @@ $(document).ready(function(){
         var sc = $(window).scrollTop();
         console.log(sc);
         // 655
-        if (sc < 400){
+        if (sc < 300){
         	$(".info").hide('fast');
         } else {
         	$(".info").show('fast');
@@ -11,22 +11,22 @@ $(document).ready(function(){
 
         if (sc < 650){
         	$(".look").hide("slow");	
-        } else if (sc > 1200){
+        } else if (sc > 1100){
         	$(".look").hide("slow");
         } else {
         	$(".look").show("slow");
         }
 
-        if (sc < 1000){
+        if (sc < 900){
         	$(".blurb").hide('fast');
         } else {
         	$(".blurb").show('fast');
         }
 
-        if (sc < 1150){
+        if (sc < 1100){
         	$(".box").hide('slow');
         } else {
         	$(".box").show('slow');
         }
     });
-})
+});

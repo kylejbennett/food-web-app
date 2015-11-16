@@ -54,6 +54,8 @@ class RecipesController < ApplicationController
     @results = @hash['matches']
     @result_count = @hash['totalMatchCount']
 
+    @users_recipes = Recipe.where(["recipeName LIKE ?", "%#{@term}%"]).all
+
     # putting the relevant information into a hash
 
     @recipes = []

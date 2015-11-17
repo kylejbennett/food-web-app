@@ -48,7 +48,7 @@
 
 // ## SHOW ##
 
-.top{
+.profile-top{
 	height: 250px;
 	background-image: url('/food_prep.jpg');
 	background-size: cover;
@@ -83,7 +83,129 @@
 			}
 		}
 
-		
+		.profile-recipes{
+			margin-top: 50px;
+
+			.image{
+				margin-bottom: 15px;
+
+				img{
+					height: 150px;
+				}
+			}
+
+			.recipe-info{
+
+				a{
+					text-decoration: none;
+					color: #6FA60D;
+				}
+
+				a:hover{
+					color: blue;
+				}
+
+				h4{
+					color: #424242;
+				}
+
+				.fav{
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					right: 190px;
+					bottom: 55px;
+
+					a{
+						font-family: sans-serif;
+						text-decoration: none;
+						text-align: center;
+						color: white;
+						font-size: 25pt;
+						background-color: #DF5E30;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border-radius: 25px;
+					}
+
+					p{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						position: relative;
+						left: 60px;
+						top: -40px;
+						color: #6FA60D;
+						visibility: hidden;
+					}
+				}
+
+				.fav:hover{
+					p{
+						visibility: visible;
+					}
+				}
+
+				.added{
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					right: 190px;
+					bottom: 55px;
+
+					p{
+						text-decoration: none;
+						text-align: center;
+						color: white;
+						font-size: 13pt;
+						background-color: #6FA60D;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border-radius: 25px;
+						padding-top: 10px;
+					}
+
+					h2{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						color: #6FA60D;
+						position: relative;
+						top: -20px;
+						left: -55px;
+					}
+				}
+
+				.saved{
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					right: 190px;
+					bottom: 55px;
+
+					p{
+						text-decoration: none;
+						text-align: center;
+						color: white;
+						font-size: 13pt;
+						background-color: #6FA60D;
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border-radius: 25px;
+						padding-top: 10px;
+					}
+				}
+
+				p{
+					a{
+						color: blue;
+					}
+				}
+			}
+		}
 	}
 }
 

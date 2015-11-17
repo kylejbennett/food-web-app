@@ -23,7 +23,7 @@
 				<% @user_recipes.each do |recipe| %>
 					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)' >
 						<h3>
-							<%= link_to recipe.recipeName, recipe.url %>
+							<%= link_to recipe.recipeName, recipe_path(recipe) %>
 						</h3>
 						<% if @favorites.where(recipe_id: recipe.id).any? %>
 							<div class="saved">

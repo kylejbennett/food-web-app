@@ -149,6 +149,11 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_created_by = Profile.find(@recipe[:user_id])
+    
+    if current_user
+      @profile = Profile.find_by(user_id: current_user.id)
+      @favorites = Favorite.where(user_id: @profile.user_id)
+    end 
   end
 
   def edit
@@ -179,10 +184,9 @@ class RecipesController < ApplicationController
     if current_user
       @profile = Profile.find_by(user_id: current_user.id)
       @favorites = Favorite.where(user_id: @profile.user_id)
-      @favorites = Favorite.where(user_id: @profile.user_id)
     end
     @profiles = Profile.all
-    @user_recipes = Recipe.where(recipeType: "user")
+    @user_recipes = Recipe.where(recipeType: "user").last(10)
     
   end
 

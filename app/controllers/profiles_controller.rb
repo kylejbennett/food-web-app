@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
     @profile = Profile.find(params[:id])
     @recipes = Recipe.where(user_id: @profile.user_id)
-    @favorites = Favorite.where(user_id: @profile.user_id)
+    @favorites = Favorite.where(user_id: current_user.id)
     
     @fav_recipes = []
     @favorites.each do |favorite|

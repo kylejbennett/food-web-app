@@ -67,7 +67,7 @@
 	overflow-x: scroll;
 
 	.user-results{
-		width: 4035px;
+		width: 5035px;
 
 		.main{
 
@@ -322,8 +322,8 @@
 						font-size: 15pt;
 						color: #6FA60D;
 						position: relative;
-						top: -20px;
-						left: -55px;
+						top: -65px;
+						left: 55px;
 					}
 				}
 
@@ -394,6 +394,10 @@
 		text-align: center;
 		padding: 25px;
 
+		.recipe-specs{
+			text-align: left;
+		}
+
 		h1{
 			color: #6FA60D;
 		}
@@ -415,6 +419,96 @@
 
 		p{
 			font-size: 12pt;
+		}
+
+		.fav{
+			width: 50px;
+			height: 50px;
+			position: relative;
+			left: 375px;
+			top: 90px;
+
+			a{
+				font-family: sans-serif;
+				text-decoration: none;
+				text-align: center;
+				color: white;
+				font-size: 25pt;
+				background-color: #DF5E30;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+			}
+
+			p{
+				width: 250px;
+				font-family: 'Oswald';
+				font-size: 15pt;
+				position: relative;
+				left: -80px;
+				top: 5px;
+				color: #6FA60D;
+				visibility: hidden;
+			}
+		}
+
+		.fav:hover{
+			p{
+				visibility: visible;
+			}
+		}
+
+		.added{
+			width: 225px;
+			height: 50px;
+			position: relative;
+			left: 308px;
+			top: 90px;
+
+			p{
+				text-decoration: none;
+				text-align: center;
+				color: white;
+				font-size: 13pt;
+				background-color: #6FA60D;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				padding-top: 10px;
+			}
+
+			h2{
+				width: 250px;
+				font-family: 'Oswald';
+				font-size: 15pt;
+				color: #6FA60D;
+				position: relative;
+				top: -20px;
+				left: -15px;
+			}
+		}
+
+		.saved{
+			width: 50px;
+			height: 50px;
+			position: relative;
+			left: 375px;
+			top: 90px;
+
+			p{
+				text-decoration: none;
+				text-align: center;
+				color: white;
+				font-size: 13pt;
+				background-color: #6FA60D;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				padding-top: 10px;
+			}		
 		}
 
 	}

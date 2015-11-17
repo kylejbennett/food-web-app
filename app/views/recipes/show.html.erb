@@ -5,19 +5,21 @@
 		<%= image_tag @recipe.avatar %>
 		<br>
 		<br>
-		<% if @favorites.where(recipe_id: @recipe.id).any? %>
-			<div class="saved">
-				<p>√</p>
-			</div>
-		<% else %>
-			<div class="fav">
-				<%=link_to "+", favorites_create_path(:recipe_id => @recipe.id), method: :post, remote: true, class: "new_fav" %>
-				<p>add to RecipeBox!</p>
-			</div>
-			<div class="added">
-				<p>√</p>
-				<h2>Added to RecipeBox!</h2>
-			</div>
+		<% if current_user %>
+			<% if @favorites.where(recipe_id: @recipe.id).any? %>
+				<div class="saved">
+					<p>√</p>
+				</div>
+			<% else %>
+				<div class="fav">
+					<%=link_to "+", favorites_create_path(:recipe_id => @recipe.id), method: :post, remote: true, class: "new_fav" %>
+					<p>add to RecipeBox!</p>
+				</div>
+				<div class="added">
+					<p>√</p>
+					<h2>Added to RecipeBox!</h2>
+				</div>
+			<% end %>
 		<% end %>
 		<div class="recipe-specs">
 			<h4><em>Added by:</em>  <%= @recipe_created_by.username %></h4>

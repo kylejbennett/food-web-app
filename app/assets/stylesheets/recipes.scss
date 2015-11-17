@@ -628,3 +628,26 @@
 		}
 	}	
 }
+
+.footer{
+	background-image: url('/food_prep.jpg');
+    background-attachment: fixed;
+
+	.foot-holder{
+		.row{
+			height: 150px;
+
+			.col-md-6{
+				height: 100%;
+				text-align: center;
+				i{
+					color: white;
+					margin: 55px 50px;
+				}
+				i:hover{
+					color: #6FA60D;
+				}
+			}
+		}
+	}
+}

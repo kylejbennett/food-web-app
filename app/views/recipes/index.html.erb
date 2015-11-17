@@ -68,19 +68,21 @@
 							<p>Total Cook Time: <%= recipe.time %></p>
 							<p>Yield: <%= recipe.yield %></p>
 							<p>Added By: <%= link_to @profiles.where(user_id: recipe.user_id).first.username, profile_path(recipe.user_id) %></p>
-							<% if @favorites.where(recipe_id: recipe.id).any? %>
-								<div class="saved">
-									<p>√</p>
-								</div>
-							<% else %>
-								<div class="fav">
-									<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
-									<p>save to RecipeBox</p>
-								</div>
-								<div class="added">
-									<p>√</p>
-									<h2>Added to RecipeBox!</h2>
-								</div>
+							<% if current_user %>
+								<% if @favorites.where(recipe_id: recipe.id).any? %>
+									<div class="saved">
+										<p>√</p>
+									</div>
+								<% else %>
+									<div class="fav">
+										<%=link_to "+", favorites_create_path(:recipe_id => recipe.id), method: :post, remote: true, class: "new_fav" %>
+										<p>save to RecipeBox</p>
+									</div>
+									<div class="added">
+										<p>√</p>
+										<h2>Added to RecipeBox!</h2>
+									</div>
+								<% end %>
 							<% end %>
 						</div>
 					</div>

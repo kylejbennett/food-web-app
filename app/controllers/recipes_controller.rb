@@ -149,7 +149,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_created_by = Profile.find(@recipe[:user_id])
-    
+
     if current_user
       @profile = Profile.find_by(user_id: current_user.id)
       @favorites = Favorite.where(user_id: @profile.user_id)
@@ -201,13 +201,9 @@ class RecipesController < ApplicationController
 
   def search_recipe_by_term(term, start)
     results = URI("http://api.yummly.com/v1/api/recipes?_app_id=4c2c2d95&_app_key=4445cd6b516d461810d81c6a455293b1&q=#{term}&maxResult=10&start=#{start}")
-    x = Net::HTTP.get(results)
+    x = Net::HTTP.get(results)  
+    hash = JSON.parse(x)
 
-    begin
-      hash = JSON.parse(x)
-    rescue StandardError
-      redirect_to recipes_path
-    end
   end
 
   def get_recipe_by_id(id)

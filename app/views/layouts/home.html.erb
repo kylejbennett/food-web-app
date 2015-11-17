@@ -22,13 +22,13 @@
 					<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 				</li>
 				<li>
+					<%= link_to "Create a Recipe", new_recipe_path %>
+				</li>
+				<li>
 					<%= link_to "My Profile", profile_path(@profile) %>
 				</li>
 				<li>
 					<%= link_to "Food Community", profiles_path %>
-				</li>
-				<li>
-					<%= link_to "Create a Recipe", new_recipe_path %>
 				</li>
 				<li>
 					<%= link_to "My RecipeBox", favorites_show_path %>
@@ -67,7 +67,7 @@
 	<%= yield %>
 
 	<div class="footer">
-		<div class="container-fluid">
+		<div class="foot-holder container-fluid">
 			<div class="row">
 				<div class="col-md-6">
 					<a href="https://www.facebook.com">

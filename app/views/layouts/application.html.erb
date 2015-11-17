@@ -25,6 +25,9 @@
 					<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 				</li>
 				<li>
+					<%= link_to "Create a Recipe", new_recipe_path %>
+				</li>
+				<li>
 					<%= link_to "My Profile", profile_path(current_user) %>
 				</li>
 				<li>
@@ -32,9 +35,6 @@
 				</li>
 				<li>
 					<%= link_to "Search Recipes", recipes_path %>
-				</li>
-				<li>
-					<%= link_to "Create a Recipe", new_recipe_path %>
 				</li>	
 				<li>
 					<%= link_to "My RecipeBox", favorites_show_path %>
@@ -65,6 +65,33 @@
 	<% end %>
 
 	<%= yield %>
+
+	<div class="footer">
+		<div class="foot-holder container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<a href="https://www.facebook.com">
+						<i class="fa fa-facebook fa-3x"></i>
+					</a>
+					<a href="https://www.twitter.com">
+						<i class="fa fa-twitter fa-3x"></i>
+					</a>
+					<a href="https://github.com/kylejbennett">
+						<i class="fa fa-github fa-3x"></i>
+					</a>
+					<a href="https://www.linkedin.com/in/kyle-bennett-b796a593">
+						<i class="fa fa-linkedin fa-3x"></i>
+					</a>
+				</div>
+				<div class="col-md-3">
+					
+				</div>
+				<div class="col-md-3">
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

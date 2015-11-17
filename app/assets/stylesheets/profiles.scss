@@ -4,6 +4,47 @@
 
 // ## INDEX ##
 
+.community{
+	font-family: 'Oswald';
+	.community-title{
+		height: 75px;
+
+		h1{
+			position: absolute;
+			color: #DF5E30;
+		}
+	}
+	.all-profiles{
+
+		.person{
+			float: left;
+			margin: 15px;
+			text-align: center;
+			display: inline-block;
+			width: 400px;
+			height: 400px;
+
+			a{
+				top: 0px;
+				color: #6FA60D;
+				text-decoration: none;
+			}
+
+			a:hover{
+				color: #DF5E30;
+			}
+
+			img{
+				width: 100%;
+			}
+
+			p{
+				font-size: 15pt;
+			}
+		}
+	}
+}
+
 
 // ## SHOW ##
 

@@ -1,12 +1,17 @@
 <div class="top"></div>
 <div class="community">
+	<div class="community-title">
+		<h1>Foodie Community</h1>
+	</div>
+	<div class="all-profiles">
+		<% @profiles.each do |profile| %>
+			<div class="person">
+				<h3><%= link_to profile.username, profile_path(profile) %></h3>
+				<%= image_tag profile.avatar %>
+				<p>Added <%= @recipes.where(user_id: profile.user_id).count %> Recipes</p>
+			</div>
 
-	<h1>Foodie Community</h1>
-
-	<% @profiles.each do |profile| %>
-
-		<h3><%= link_to profile.username, profile_path(profile) %></h3>
-
-	<% end %>
+		<% end %>
+	</div>
 
 </div>

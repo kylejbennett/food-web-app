@@ -1,35 +1,121 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.top{
-	height: 250px;
-	background-image: url('/food_prep.jpg');
-	background-size: cover;
-}
+
 
 .recipebox{
-	
-	.container{
-		background-color: white;
-		border-radius: 10px;
+	margin-top: 225px;
+	background-image: url('/food_prep.jpg');
+	background-size: cover;
+	padding-right: 50px;
+
+	.recipe-box-title{
+
+		h1{
+			padding-left: 10px;
+			padding-top: 75px;
+			width: 300px;
+			height: 125px;
+			position: fixed;
+			left: 40px;
+			top: 0px;
+			color: #DF5E30;
+			z-index: 1;
+			background-color: rgba(255,255,255,0.6);
+			border-radius: 5px;
+		}
+	}
+
+	.recipe-holder{
+
+		h1{
+			color: #DF5E30;
+		}
 
 		.favorites{
-			.image{
-				background-color: rgba(0,0,0,0.2);
-				margin-bottom: 10px;
+			.fav-image{
+				background-color: rgba(0,0,0,0.4);
+				border-radius: 10px;
+				margin: 10px;
+				color: white;
+
+				h4{
+					font-size: 20pt;
+					color: #DF5E30;
+				}
+
+				h3{
+					font-size: 15pt;
+				}
+
+				a{
+					color: #6FA60D;
+				}
+
+				a:hover{
+					color: #DF5E30;
+				}
 
 				img{
 					width: 100%;
+				}
+
+				.del-fav{
+					position: relative;
+					left: 300px;
+					top: -55px;
+					width: 50px;
+					height: 50px;
+					border-radius: 25px;
+
+					a{
+						display: inline-block;
+						text-align: center;
+						height: 50px;
+						width: 50px;
+						border-radius: 25px;
+						background-color: #DF5E30;
+						font-size: 32px;
+						color: white;
+						text-decoration: none;
+						padding-bottom: 10px;
+					}
+
+					p{
+						width: 250px;
+						font-family: 'Oswald';
+						font-size: 15pt;
+						position: relative;
+						left: -65px;
+						top: 5px;
+						color: #6FA60D;
+						visibility: hidden;
+					}
+				}
+
+				.del-fav:hover{
+					p{
+						visibility: visible;
+					}
 				}
 			}
 		}
 
 		.contributions{
 
-
 			.list{
-				background-color: rgba(0,0,0,0.2);
-				margin-bottom: 10px;
+				background-color: rgba(0,0,0,0.4);
+				border-radius: 10px;
+				margin: 10px;
+				color: white;
+
+				a{
+					color: #6FA60D;
+				}
+
+				a:hover{
+					color: #DF5E30;
+				}
 
 				img{
 					width: 100%;

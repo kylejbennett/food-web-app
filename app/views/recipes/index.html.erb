@@ -53,14 +53,14 @@
 			<% if @users_recipes %>
 				<% @users_recipes.each do |recipe| %>
 					<div class="main row">
-						<div class="image">
+						<div class="image col-md-5">
 							<% if recipe.avatar != nil %>
 								<%= image_tag recipe.avatar %>
 							<% else %>
 								<%= image_tag '/food_prep.jpg' %>
 							<% end %>
 						</div>
-						<div class="recipe-info col-md-8">
+						<div class="recipe-info col-md-7">
 							<h3><%= link_to recipe.recipeName, recipe_path(recipe) %></h3>
 							<h4><%= recipe.source %></h4>
 							<p>Total Cook Time: <%= recipe.time %></p>
@@ -86,14 +86,14 @@
 			<% end %>
 			<% @recipes.each do |recipe| %>
 				<div class="main row">
-					<div class="image col-md-4">
+					<div class="image col-md-5">
 						<% if recipe['image'] != nil %>
 							<%= image_tag recipe['image'] %>
 						<% else %>
 							<%= image_tag '/food_prep.jpg' %>
 						<% end %>
 					</div>
-					<div class="recipe-info col-md-8">
+					<div class="recipe-info col-md-7">
 						<h3><%= link_to recipe['name'], recipe['url'], :target=>"blank" %></h3>
 						<h4><%= recipe['source'] %></h4>
 						<p>Rating: <%= recipe['rating'] %> Stars</p>

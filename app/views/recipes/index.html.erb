@@ -16,12 +16,15 @@
 </div>
 
 <% if current_user %>
+	<h1 class="recent">Recently added recipes</h1>
 	<div class="recently_added">
 		<div class="user-results container-fluid">
 			<div class="main row">
 				<% @user_recipes.each do |recipe| %>
-					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)' >
-						
+					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)', 'linear-gradient(#eb01a5, #d13531)' >
+						<h3>
+							<%= link_to recipe.recipeName, recipe.url %>
+						</h3>
 						<% if @favorites.where(recipe_id: recipe.id).any? %>
 							<div class="saved">
 								<p>√</p>

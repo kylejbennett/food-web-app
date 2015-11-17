@@ -56,7 +56,11 @@
 		<h1>COOKitUP</h1>
 		<h3>Your One-stop-Shop for everything Recipes</h3>
 		<div class="link">	
-			<p><%= link_to "Get Cooking", new_user_registration_path %></p>
+			<% if current_user %>
+				<p><%= link_to "Get Cooking", recipes_path %></p>
+			<% else %>
+				<p><%= link_to "Get Cooking", new_user_registration_path %></p>
+			<% end %>
 		</div>
 	</div>
 

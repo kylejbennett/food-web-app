@@ -62,12 +62,12 @@
 
 .recently_added{
 
-	background-color: white;
+	background-color: black;
 	width: 100%;
 	overflow-x: scroll;
 
 	.user-results{
-		width: 4000px;
+		width: 4035px;
 
 		.main{
 
@@ -78,7 +78,6 @@
 				width: 500px;
 				height: 400px;
 				background-size: cover;
-				
 
 				a{
 					text-decoration: none;
@@ -93,6 +92,7 @@
 					width: 500px;
 					height: 150px;
 					margin-left: -15px;
+					padding-right: 200px;
 					padding-top: 90px;
 					padding-left: 10px;
 					position: relative;
@@ -112,8 +112,8 @@
 					width: 50px;
 					height: 50px;
 					position: absolute;
-					left: 375px;
-					bottom: 100px;
+					left: 390px;
+					bottom: 45px;
 
 					a{
 						font-family: sans-serif;
@@ -150,8 +150,8 @@
 					width: 225px;
 					height: 50px;
 					position: absolute;
-					left: 375px;
-					bottom: 100px;
+					left: 390px;
+					bottom: 45px;
 
 					p{
 						text-decoration: none;
@@ -181,8 +181,8 @@
 					width: 50px;
 					height: 50px;
 					position: absolute;
-					left: 375px;
-					bottom: 100px;
+					left: 390px;
+					bottom: 45px;
 
 					p{
 						text-decoration: none;
@@ -218,6 +218,22 @@
 	width: 1000px;
 	padding: 25px;
 	margin-left: 275px;
+
+	.yum{
+		width: 400px;
+		text-align: center;
+
+		p{
+			font-size: 12pt;
+			display: inline-block;
+		}
+
+		img{
+			width: 100px;
+		}
+	}
+
+
 
 	.search-results{
 		width: 100%;
@@ -347,6 +363,11 @@
 					height: 225px;
 				}
 			}
+		}
+
+		a{
+			font-family: 'Oswald';
+			font-size: 15pt;
 		}
 	}
 

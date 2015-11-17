@@ -21,7 +21,7 @@
 		<div class="user-results container-fluid">
 			<div class="main row">
 				<% @user_recipes.each do |recipe| %>
-					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)', 'linear-gradient(#eb01a5, #d13531)' >
+					<div class="image col-md-2" style='background-image: url(<%= recipe.avatar %>)' >
 						<h3>
 							<%= link_to recipe.recipeName, recipe.url %>
 						</h3>
@@ -48,7 +48,9 @@
 <div class="clear"></div>
 <% if @term %>
 	<div class="content">
-		Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
+		<div class="yum">
+			<p>Recipe search powered by</p> <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
+		</div>
 		<div class="search-results container">
 			<% if @users_recipes %>
 				<% @users_recipes.each do |recipe| %>

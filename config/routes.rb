@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'favorites/show'
   get 'favorites/destroy'
 
+  get 'profiles/contact' => 'profiles#contact'
+  post 'profiles/sendmail' => 'profiles#sendmail'
+
   post 'recipes/search' => 'recipes#search'
 
   post 'recipes/next_page' => 'recipes#next_page'

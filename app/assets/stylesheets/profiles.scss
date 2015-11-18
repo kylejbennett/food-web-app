@@ -293,6 +293,25 @@
 	}	
 }
 
+// ## CONTACT ##
+
+.contact-body{
+	height: 800px;
+	padding-top: 10%;
+	background-image: url('/red_onion_parsnip.jpg');
+	background-size: cover;
+
+	.contact-form{
+		margin: 0 auto;
+		padding: 25px 25px;
+		text-align: center;
+		width: 600px;
+		background: rgba(255,255,255,0.6);
+		border-radius: 20px;
+		font-family: 'Oswald';
+	}
+}
+
 .footer{
 	background-image: url('/food_prep.jpg');
     background-attachment: fixed;

@@ -60,6 +60,38 @@ class ProfilesController < ApplicationController
     redirect_to root_path
   end
 
+  def contact
+    if current_user
+      @profile = Profile.where(user_id: current_user.id).first
+    end
+  end
+
+  def sendmail
+    @name=params[:name]
+      @email=params[:email]
+      @body=params[:body]
+
+      m = Mandrill::API.new
+      message = {
+        :subject=> "Customer Email",
+        :from_name=> "#{@name}",
+        :text=>"",
+        :to=>[
+            {
+            :email=> "kyle.j.bennett5@gmail.com",
+            :name=> "Customer Service"
+            }
+            ],
+            :html=>"<html><p>#{@body}</p></html>",
+            :from_email=>"#{@email}"
+    }
+      sending = m.messages.send message
+      puts sending
+
+      redirect_to root_path
+      flash[:notice] = "Your message has been sent!"
+  end
+
   private
 
   def profile_params

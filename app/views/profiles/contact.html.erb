@@ -1,0 +1,26 @@
+
+<div class="contact-body">
+	<div class="contact-form">
+	<!-- CONTACT FORM -->
+		<%= form_tag(controller: "profiles", action:"sendmail", method: "post") do %>
+			<!-- FIRST PANEL -->
+			<div class="contact-info">
+				<h2 class="contact-title">Send us some feedback!</h2>
+			
+				<%= text_field_tag(:name, nil, :placeholder => "Name", size: "40x1", required: true)%>
+				<br>
+				<br>
+				<%= email_field_tag(:email, nil, :placeholder => "Email", size: "40x1", required: true) %>
+			</div>
+			<br>
+			<!-- SECOND PANEL -->
+			<div class="contact-info">
+				<h3 class="panel-title">Your Comments</h3>
+
+				<%= text_area_tag(:body, nil, :placeholder => "Message", size:"40x12") %>
+				<br>
+				<%= button_tag("Contact", type: 'submit') %>
+			</div>
+		<% end %>
+	</div>
+</div>

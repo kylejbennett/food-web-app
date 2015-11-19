@@ -1,7 +1,12 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$default-green: #6FA60D;
+$default-red: #DF5E30;
+$my_font: 'Oswald';
+
 body{
+	font-family: $my_font;
 
 	.banner{
 		width: 100%;
@@ -20,6 +25,7 @@ body{
 		margin-top: -40px;
 		position: fixed;
 		z-index: 2;
+		font-family: $my_font;
 
 		ul{
 			padding-right: 15px;
@@ -30,13 +36,12 @@ body{
 				list-style: none;
 
 				a{
-					font-family: 'Oswald';
-					color: #6FA60D;
+					color: $default-green;
 					text-decoration: none;
 				}
 
 				a:hover{
-					color: #DF5E30;
+					color: $default-red;
 				}
 			}
 		}
@@ -48,21 +53,20 @@ body{
 		position: absolute;
 		top: 10px;
 		z-index: 1;
+		font-family: $my_font;
 
 		h1{
 			position: fixed;
 			margin-left: 50px;
-			font-family: 'Oswald';
 			font-size: 40pt;
-			color: #6FA60D;
+			color: $default-green;
 		}
 
 		h3{
 			padding-top: 85px;
 			padding-left: 50px;
-			font-family: 'Oswald';
 			font-size: 22pt;
-			color: #DF5E30;
+			color: $default-red;
 		}
 
 		.link{
@@ -75,21 +79,19 @@ body{
 				height: 50px;
 				text-align: center;
 				color: white;
-				border: 3px solid #6FA60D;
+				border: 3px solid $default-green;
 				border-radius: 15px;
-				font-family: 'Scada';
 				font-size: 20pt;
 				padding-top: 3px;
 
 				a{
 					text-decoration: none;
-					font-family: 'Oswald';
 					color: white;
 				}
 			}
 
 			p:hover{
-				background-color: #6FA60D;
+				background-color: $default-green;
 				a{
 					color: black;
 				}
@@ -99,13 +101,13 @@ body{
 
 	.about{
 		width: 100%;
+		font-family: $my_font;
 
 		.cook{
 			margin: 175px 300px;
 
 			.info{
 				position: relative;
-				font-family: 'Oswald';
 				font-size: 40pt;
 
 			}
@@ -116,15 +118,16 @@ body{
 				width: 250px;
 
 				a{
-					font-family: 'Oswald';
 					font-size: 30px;
-					color: #DF5E30;
+					color: $default-red;
 				}
 			}
 		}
 	}
 
 	.boxes{
+		font-family: $my_font;
+
 		.row{
 			height: 400px;
 			@media screen and (max-width: 990px) {
@@ -133,7 +136,7 @@ body{
 
 			.left{
 				height: 400px;
-				background-color: #DF5E30;
+				background-color: $default-red;
 				opacity: 0.8;
 
 				.blurb{
@@ -145,7 +148,6 @@ body{
 						height: 90%;
 						border-top: 5px solid black;
 						border-bottom: 5px solid black;
-						font-family: 'Oswald';
 						padding-top: 15%;
 						line-height: 60px;
 						margin-right: 15px;
@@ -153,14 +155,13 @@ body{
 				}
 
 				.box{
-					background-color: #DF5E30;
+					background-color: $default-red;
 					position: relative;
 					top: 70%;
 					left: 65%;
 					width: 250px;
 
 					a{
-						font-family: 'Oswald';
 						font-size: 18pt;
 						color: white;
 					}
@@ -172,37 +173,11 @@ body{
 			}
 
 			.right{
-				height: 400px;
-				background-color: #6FA60D;
-				opacity: 0.8;
-
-				.blurb{
-					position: absolute;
-					height: 100%;
-
-					h2{
-						text-align: center;
-						height: 90%;
-						border-top: 5px solid black;
-						border-bottom: 5px solid black;
-						font-family: 'Oswald';
-						padding-top: 15%;
-						line-height: 60px;
-						margin-right: 15px;
-					}
-				}
+				@extend .left;
+				background-color: $default-green;
 
 				.box{
-					position: relative;
-					top: 70%;
-					left: 65%;
-					width: 250px;
-
-					a{
-						font-family: 'Oswald';
-						font-size: 18pt;
-						color: white;
-					}
+					background-color: $default-green;
 				}
 			}
 
@@ -228,7 +203,7 @@ body{
 						margin: 55px 50px;
 					}
 					i:hover{
-						color: #6FA60D;
+						color: $default-green;
 					}
 				}
 
@@ -240,7 +215,7 @@ body{
 						margin: 55px 50px;
 					}
 					i:hover{
-						color: #6FA60D;
+						color: $default-green;
 					}
 				}
 			}

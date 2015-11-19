@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$default-green: #6FA60D;
+$default-red: #DF5E30;
+$my_font: 'Oswald';
+
 .search_background{
 	height: 100%;
 	background-image: url('/veg_background.jpg');
 	background-size: cover;
+	font-family: $my_font;
 	
 
 	.search{
@@ -15,8 +20,7 @@
 		background-color: rgba(0,0,0,0.7);
 
 		h1{
-			font-family: 'Oswald';
-			color: white;
+			color: $default-red;
 		}
 
 		input{
@@ -34,7 +38,7 @@
 
 				height: 40px;
 				width: 40px;
-				background-color: #6FA60D;
+				background-color: $default-green;
 				border: none;
 				font-size: 14pt;
 				font-weight: bold;
@@ -54,8 +58,8 @@
 	padding-left: 25px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	color: #DF5E30;
-	font-family: 'Oswald';
+	color: $default-red;
+	font-family: $my_font;
 	background: rgba(0,0,0,0.6);
 	width: 100%;
 }
@@ -65,6 +69,7 @@
 	background-color: black;
 	width: 100%;
 	overflow-x: scroll;
+	font-family: $my_font;
 
 	.user-results{
 		width: 5035px;
@@ -81,7 +86,7 @@
 
 				a{
 					text-decoration: none;
-					color: #6FA60D;
+					color: $default-green;
 				}
 
 				a:hover{
@@ -121,7 +126,7 @@
 						text-align: center;
 						color: white;
 						font-size: 25pt;
-						background-color: #DF5E30;
+						background-color: $default-red;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -130,12 +135,11 @@
 
 					p{
 						width: 250px;
-						font-family: 'Oswald';
 						font-size: 15pt;
 						position: relative;
 						left: -45px;
 						top: 5px;
-						color: #6FA60D;
+						color: $default-green;
 						visibility: hidden;
 					}
 				}
@@ -158,7 +162,7 @@
 						text-align: center;
 						color: white;
 						font-size: 13pt;
-						background-color: #6FA60D;
+						background-color: $default-green;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -168,9 +172,8 @@
 
 					h2{
 						width: 250px;
-						font-family: 'Oswald';
 						font-size: 15pt;
-						color: #6FA60D;
+						color: $default-green;
 						position: relative;
 						top: -20px;
 						left: -55px;
@@ -189,7 +192,7 @@
 						text-align: center;
 						color: white;
 						font-size: 13pt;
-						background-color: #6FA60D;
+						background-color: $default-green;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -218,6 +221,7 @@
 	width: 1000px;
 	padding: 25px;
 	margin-left: 275px;
+	font-family: $my_font;
 
 	.yum{
 		width: 400px;
@@ -247,7 +251,7 @@
 
 				a{
 					text-decoration: none;
-					color: #6FA60D;
+					color: $default-green;
 				}
 
 				a:hover{
@@ -271,7 +275,7 @@
 						text-align: center;
 						color: white;
 						font-size: 25pt;
-						background-color: #DF5E30;
+						background-color: $default-red;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -280,12 +284,11 @@
 
 					p{
 						width: 250px;
-						font-family: 'Oswald';
 						font-size: 15pt;
 						position: relative;
 						left: 60px;
 						top: -40px;
-						color: #6FA60D;
+						color: $default-green;
 						visibility: hidden;
 					}
 				}
@@ -308,7 +311,7 @@
 						text-align: center;
 						color: white;
 						font-size: 13pt;
-						background-color: #6FA60D;
+						background-color: $default-green;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -318,9 +321,8 @@
 
 					h2{
 						width: 250px;
-						font-family: 'Oswald';
 						font-size: 15pt;
-						color: #6FA60D;
+						color: $default-green;
 						position: relative;
 						top: -65px;
 						left: 55px;
@@ -339,7 +341,7 @@
 						text-align: center;
 						color: white;
 						font-size: 13pt;
-						background-color: #6FA60D;
+						background-color: $default-green;
 						display: inline-block;
 						width: 50px;
 						height: 50px;
@@ -366,7 +368,6 @@
 		}
 
 		a{
-			font-family: 'Oswald';
 			font-size: 15pt;
 		}
 	}
@@ -383,7 +384,7 @@
 
 	background-image: url('/food_prep.jpg');
 	padding: 50px;
-	font-family: 'Oswald';
+	font-family: $my_font;
 
 	.user_recipe{
 
@@ -399,7 +400,7 @@
 		}
 
 		h1{
-			color: #6FA60D;
+			color: $default-green;
 		}
 
 		img{
@@ -408,11 +409,11 @@
 		}
 
 		em{
-			color: #6FA60D;
+			color: $default-green;
 		}
 
 		a{
-			color: #DF5E30;
+			color: $default-red;
 			font-size: 15pt;
 			margin: 0 20px;
 		}
@@ -434,7 +435,7 @@
 				text-align: center;
 				color: white;
 				font-size: 25pt;
-				background-color: #DF5E30;
+				background-color: $default-red;
 				display: inline-block;
 				width: 50px;
 				height: 50px;
@@ -443,12 +444,11 @@
 
 			p{
 				width: 250px;
-				font-family: 'Oswald';
 				font-size: 15pt;
 				position: relative;
 				left: -80px;
 				top: 5px;
-				color: #6FA60D;
+				color: $default-green;
 				visibility: hidden;
 			}
 		}
@@ -471,7 +471,7 @@
 				text-align: center;
 				color: white;
 				font-size: 13pt;
-				background-color: #6FA60D;
+				background-color: $default-green;
 				display: inline-block;
 				width: 50px;
 				height: 50px;
@@ -481,9 +481,8 @@
 
 			h2{
 				width: 250px;
-				font-family: 'Oswald';
 				font-size: 15pt;
-				color: #6FA60D;
+				color: $default-green;
 				position: relative;
 				top: -20px;
 				left: -15px;
@@ -502,7 +501,7 @@
 				text-align: center;
 				color: white;
 				font-size: 13pt;
-				background-color: #6FA60D;
+				background-color: $default-green;
 				display: inline-block;
 				width: 50px;
 				height: 50px;
@@ -529,7 +528,7 @@
 		width: 800px;
 		background: rgba(255,255,255,0.6);
 		border-radius: 20px;
-		font-family: 'Oswald';
+		font-family: $my_font;
 
 		.new_recipe{
 			.field{
@@ -577,15 +576,15 @@
 		width: 800px;
 		background: rgba(255,255,255,0.6);
 		border-radius: 20px;
-		font-family: 'Oswald';
+		font-family: $my_font;
 
 		h1{
 			font-size: 30pt;
-			color: #6FA60D;
+			color: $default-green;
 		}
 
 		a{
-			color: #DF5E30;
+			color: $default-red;
 			font-size: 12pt;
 		}
 
@@ -614,11 +613,11 @@
 				height: 35px;
 				width: 100px;
 				background: none;
-				border: 2px solid #6FA60D;
+				border: 2px solid $default-green;
 			}
 
 			input:hover{
-				background: #DF5E30;
+				background: $default-red;
 			}
 		}
 
@@ -645,7 +644,7 @@
 					margin: 55px 50px;
 				}
 				i:hover{
-					color: #6FA60D;
+					color: $default-green;
 				}
 			}
 		}

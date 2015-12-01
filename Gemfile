@@ -5,8 +5,11 @@ gem 'paperclip'
 gem 'awesome_print'
 gem 'devise'
 
+gem 'therubyracer'
+gem 'fcgi'
 
-require 'JSON'
+
+require 'json'
 require 'net/http'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

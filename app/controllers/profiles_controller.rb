@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+    @profile = Profile.where(user_id: current_user.id).first
     @recipes = Recipe.all
   end
 

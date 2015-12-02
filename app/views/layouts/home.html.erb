@@ -24,9 +24,15 @@
 				<li>
 					<%= link_to "Create a Recipe", new_recipe_path %>
 				</li>
-				<li>
-					<%= link_to "My Profile", profile_path(@profile) %>
-				</li>
+				<% if @profile.username == nil %>
+					<li>
+						<%= link_to "My Profile", new_profile_path %>
+					</li>
+				<% else %>
+					<li>
+						<%= link_to "My Profile", profile_path(@profile) %>
+					</li>
+				<% end %>
 				<li>
 					<%= link_to "Food Community", profiles_path %>
 				</li>

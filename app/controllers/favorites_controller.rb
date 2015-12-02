@@ -28,7 +28,7 @@ class FavoritesController < ApplicationController
     end
 
     @profiles = Profile.all
-    @profile = Profile.find(current_user.id)
+    @profile = Profile.where(user_id: current_user.id).first
     @recipes = Recipe.where(user_id: @profile.user_id)
     @favorites = Favorite.where(user_id: @profile.user_id)
     

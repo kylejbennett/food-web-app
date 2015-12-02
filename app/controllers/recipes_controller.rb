@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_filter :set_variables, :only =>[:index, :search, :next_page, :prev_page]
+  before_filter :set_variables, :only =>[:index, :new, :search, :next_page, :prev_page]
   before_filter :find_recipe, :only =>[:destroy, :update, :edit, :show]
   
   def index
@@ -148,7 +148,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_created_by = Profile.find(@recipe[:user_id])
+    @recipe_created_by = Profile.find_by(user_id: @recipe[:user_id])
 
     if current_user
       @profile = Profile.find_by(user_id: current_user.id)
